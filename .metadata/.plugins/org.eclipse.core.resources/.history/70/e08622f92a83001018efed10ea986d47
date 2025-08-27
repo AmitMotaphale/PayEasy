@@ -1,0 +1,7 @@
+spring.application.name=payeasy-userserv
+spring.datasource.url=jdbc:oracle:thin:@localhost:1521:orcl
+spring.datasource.username=payeasy
+spring.datasource.password=payeasy
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.database-platform=org.hibernate.dialect.Oracle12cDialect
+spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver

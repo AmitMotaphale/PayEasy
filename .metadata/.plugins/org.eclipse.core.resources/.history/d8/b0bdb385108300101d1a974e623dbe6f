@@ -1,0 +1,5 @@
+package com.payeasy.user.entity;
+
+public class User {
+
+}

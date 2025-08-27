@@ -1,0 +1,9 @@
+package com.payeasy.user.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+//Mark a class as a service provider
+public class UserService {
+
+}

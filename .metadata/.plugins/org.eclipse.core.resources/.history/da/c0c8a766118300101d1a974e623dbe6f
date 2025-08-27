@@ -1,0 +1,19 @@
+package com.payeasy.user.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.payeasy.user.entity.User;
+import com.payeasy.user.repository.UserRepository;
+
+@Service
+//Mark a class as a service provider
+public class UserService {
+	@Autowired
+	private UserRepository userRepository;
+	
+	public User register(User user) {
+		return userRepository.save(user);
+    }
+	
+}
