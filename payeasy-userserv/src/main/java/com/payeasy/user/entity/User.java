@@ -2,6 +2,7 @@ package com.payeasy.user.entity;
 
 import java.sql.Timestamp;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +25,16 @@ public class User {
     private Boolean mfaEnabled;
     private Timestamp createdAt;
     private Timestamp updatedAt;
+    @Column(name = "ROLE")
+    private String role = "CONSUMER"; // default value
+
+    public String getRole() {
+    	return role; 
+    	}
+    public void setRole(String role) { 
+    	this.role = role; 
+    	}
+
 	public long getUserId() {
 		return userId;
 	}
