@@ -2,6 +2,7 @@ package com.payeasy.user.entity;
 
 import java.sql.Timestamp;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,13 +12,12 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name= "USERS")
 public class User {
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//database handles the auto-increment of the ID
 	private long userId;
 	private String fullName;
+	@Column(unique = true)
 	private String email;
 	private String mobile;
     private String passwordHash;
