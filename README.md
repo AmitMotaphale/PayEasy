@@ -111,13 +111,13 @@ is forwarded to User Service’s `/api/users/register` endpoint.
 ## Service Documentation Links
 
 See individual service READMEs for full API details, request/response examples, and configuration:
-- [User Service](./user-service/README.md)
-- [Bank Account Service](./bank-account-service/README.md)
-- [Bill Service](./bill-service/README.md)
-- [Merchant/Product Service](./merchant-product-service/README.md)
-- [Payment Service](./payment-service/README.md)
-- [API Gateway](./api-gateway/README.md)
-- [Eureka Server](./eureka-server/README.md)
+- [User Service](./payeasy-userserv/README.md)
+- [Bank Account Service](./payeasy-bankaccserv/README.md)
+- [Bill Service](./payeasy-billserv/README.md)
+- [Merchant/Product Service](./payeasy-merchprodserv/README.md)
+- [Payment Service](./payeasy-paymentserv/README.md)
+- [API Gateway](./payeasy-api-gateway/README.md)
+- [Eureka Server](./payeasy-eureka-server/README.md)
 
 ---
 ## Additional Setup
