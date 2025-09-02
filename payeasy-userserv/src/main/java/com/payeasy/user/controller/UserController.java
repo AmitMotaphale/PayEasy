@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.payeasy.user.entity.User;
 import com.payeasy.user.service.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -24,7 +26,7 @@ public class UserController {
 	    private UserService userService;
 
 	 @PostMapping("/register")
-	    public ResponseEntity<?> registerUser(@RequestBody User user) {
+	    public ResponseEntity<?> registerUser(@RequestBody @Valid User user) {
 	        try {
 	            User savedUser = userService.register(user);
 	            return ResponseEntity.ok(savedUser);

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.payeasy.payment.entity.Transaction;
 import com.payeasy.payment.service.TransactionService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/transactions")
 public class TransactionController {
@@ -21,7 +23,7 @@ public class TransactionController {
     private TransactionService transactionService;
 
     @PostMapping
-    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction txn) {
+    public ResponseEntity<Transaction> createTransaction(@RequestBody @Valid Transaction txn) {
     	Transaction savedTxn = transactionService.createTransaction(txn);
         return ResponseEntity.ok(savedTxn);
     }

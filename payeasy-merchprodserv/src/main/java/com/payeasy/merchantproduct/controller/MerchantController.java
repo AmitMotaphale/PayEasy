@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.payeasy.merchantproduct.entity.Merchant;
 import com.payeasy.merchantproduct.service.MerchantService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/merchants")
 public class MerchantController {
@@ -24,7 +26,7 @@ public class MerchantController {
 	private MerchantService merchantService;
 	
 	@PostMapping
-    public ResponseEntity<Merchant> addMerchant(@RequestBody Merchant merchant) {
+    public ResponseEntity<Merchant> addMerchant(@RequestBody @Valid Merchant merchant) {
         Merchant savedMerchant = merchantService.addMerchant(merchant);
         return ResponseEntity.ok(savedMerchant);
     }

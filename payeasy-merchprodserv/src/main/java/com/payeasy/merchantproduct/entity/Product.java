@@ -7,6 +7,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "PRODUCTS")
@@ -17,8 +21,13 @@ public class Product {
 	
 	private Long merchantId;
 	
+	@NotBlank(message = "Product name is required")
+	@Size(max = 100, message = "Product name must be at most 100 characters")
     private String productName;
+	@Size(max = 500, message = "Description can be at most 500 characters")
     private String description;
+	@NotNull(message = "Price is required")
+	@DecimalMin(value = "0.0", inclusive = false, message = "Price must be greater than zero")
     private Double price;
     private Timestamp createdAt;
 	public Long getProductId() {

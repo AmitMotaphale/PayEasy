@@ -7,6 +7,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "TRANSACTIONS")
@@ -15,13 +19,31 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long txnId;
 	
+	@NotNull(message = "User ID is required")
 	private Long userId;
+	
+	@NotNull(message = "Wallet ID is required")
 	private Long walletId;
+	
+	@NotNull(message = "Bank ID is required")
 	private Long bankId;
+	
+//	@NotNull(message = "Merchant ID is required")
     private Long merchantId;
+	
+	@NotNull(message = "Transaction type is required")
+	@Size(min = 3, max = 20, message = "Transaction type must be between 3 and 20 characters")
     private String txnType;
+	
+	@NotNull(message = "Amount is required")
+	@Positive(message = "Amount must be positive")
     private Double amount;
-    private String status;
+	
+	@NotNull(message = "Status is required")
+	@Pattern(regexp = "^(PENDING|SUCCESS|FAILED|CANCELLED)$", message = "Status must be one of PENDING, SUCCESS, FAILED, CANCELLED")
+	private String status;
+	
+	@Size(max = 255, message = "Description can be at most 255 characters")
     private String description;
     private Timestamp createdAt;
     public Long getTxnId() {

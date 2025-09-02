@@ -7,6 +7,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "MERCHANTS")
@@ -15,8 +19,18 @@ public class Merchant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long merchantId;
 	
+	@NotBlank(message="Merchant name is required")
+	@Size(max=100 ,message="Merchant name must be at most 100 characters")
 	private String merchantName;
+	@NotBlank(message = "Contact number is required")
+	@Pattern(
+	    regexp = "^[6-9]\\d{9}$",
+	    message = "Contact number must be a 10-digit number starting with 6-9"
+	)
 	private String contactNumber;
+	
+	@NotBlank(message = "Email is required")
+	@Email(message = "Email should be valid")
 	private String email;
 	private Timestamp createdAt;
 	public Long getMerchantId() {

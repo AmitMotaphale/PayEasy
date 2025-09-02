@@ -8,6 +8,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
 
 @Entity
 @Table(name= "USERS")
@@ -16,9 +20,13 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//database handles the auto-increment of the ID
 	private long userId;
+	@NotBlank(message = "Name is required")
 	private String fullName;
+	@NotBlank(message = "Email is required")
+	@Email(message = "Email should be valid")
 	@Column(unique = true)
 	private String email;
+	@Pattern(regexp = "^[6-9]\\d{9}$", message = "Mobile number must be 10 digits and start with 6-9")
 	private String mobile;
     private String passwordHash;
     private Boolean mfaEnabled;
