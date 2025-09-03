@@ -1,59 +1,38 @@
 package com.payeasy.user.service;
 
-import java.sql.Timestamp;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.payeasy.user.entity.User;
 import com.payeasy.user.repository.UserRepository;
 import com.payeasy.user.util.HashUtil;
+import org.springframework.stereotype.Service;
+import java.sql.Timestamp;
+import java.util.Optional;
 
 @Service
-//Mark a class as a service provider
-public class UserService {
-	
-	@Autowired
-	private UserRepository userRepository;
-	
-	public User register(User user) {
-		 if (user.getEmail() == null || user.getEmail().isEmpty()) {
-	            throw new IllegalArgumentException("Email is required");
-	        }
-		 if (user.getPasswordHash() == null || user.getPasswordHash().isEmpty()) {
-	            throw new IllegalArgumentException("Password is required");
-	        }
-		 
-		 String hashedPass = HashUtil.md5Hash(user.getPasswordHash());
-	        user.setPasswordHash(hashedPass);
-	        user.setMfaEnabled(false);
-	        
-        user.setCreatedAt(new Timestamp(System.currentTimeMillis()));
-        user.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+public class UserService{
 
-		return userRepository.save(user);
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository){
+        this.userRepository = userRepository;
     }
-    public Optional<User> login(String email, String password) {
-        Optional<User> userOpt = userRepository.findByEmail(email);
-        if (userOpt.isEmpty()) return Optional.empty();
 
-        User user = userOpt.get();
-        String hashedPass = HashUtil.md5Hash(password);
-        if (!hashedPass.equals(user.getPasswordHash())) {
+    public Optional<User> login(String email, String password){
+    	Optional<User> userOpt=userRepository.findByEmail(email);
+    	User user = userOpt.get();
+    	String hashedPass = HashUtil.md5Hash(password);
+    	if (!hashedPass.equals(user.getPasswordHash())) {
             return Optional.empty();
         }
-        return Optional.of(user);
+    	 return Optional.of(user);
     }
 
-    public User enableMfa(Long userId, boolean enable) {
-        User user = userRepository.findById(userId)
-            .orElseThrow(() -> new IllegalArgumentException("User not found"));
-        user.setMfaEnabled(enable);
-        user.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
+    public User register(User user) {
+    	 String hashedPass = HashUtil.md5Hash(user.getPasswordHash());
+    	 user.setPasswordHash(hashedPass);
+    	 user.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+         user.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
         return userRepository.save(user);
     }
-
     public User updateProfile(Long userId, User updatedUser) {
         User user = userRepository.findById(userId)
             .orElseThrow(() -> new IllegalArgumentException("User not found"));
@@ -62,12 +41,11 @@ public class UserService {
         user.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
         return userRepository.save(user);
     }
-	
-	public Optional<User> findByEmail(String email) {
+    public Optional<User> findByEmail(String email) {
         return userRepository.findByEmail(email);
     }
-	
-	 public Optional<User> findByMobile(String mobile) {
+	public Optional<User> findByMobile(String mobile) {
 	        return userRepository.findByMobile(mobile);
 	    }
+
 }

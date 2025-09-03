@@ -2,48 +2,43 @@ package com.payeasy.user.entity;
 
 import java.sql.Timestamp;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Positive;
 
 @Entity
-@Table(name= "USERS")
+@Table(name="USERS")
 public class User {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//database handles the auto-increment of the ID
-	private long userId;
-	@NotBlank(message = "Name is required")
-	private String fullName;
-	@NotBlank(message = "Email is required")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //database handles the auto-increement of the ID
+    private Long userId;
+    @NotBlank(message = "Name is required")
+    private String fullName;
+    @NotBlank(message = "Email is required")
 	@Email(message = "Email should be valid")
 	@Column(unique = true)
-	private String email;
-	@Pattern(regexp = "^[6-9]\\d{9}$", message = "Mobile number must be 10 digits and start with 6-9")
+    private String email;
+    @Pattern(regexp = "^[6-9]\\d{9}$", message = "Mobile number must be 10 digits and start with 6-9")
 	private String mobile;
     private String passwordHash;
-    private Boolean mfaEnabled;
     private Timestamp createdAt;
     private Timestamp updatedAt;
-
-	public long getUserId() {
+    
+    // getters/setters
+    
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(long userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	public String getFullName() {
 		return fullName;
 	}
-	public void setFullName(String fullname) {
-		this.fullName = fullname;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 	public String getEmail() {
 		return email;
@@ -63,12 +58,6 @@ public class User {
 	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = passwordHash;
 	}
-	public Boolean getMfaEnabled() {
-		return mfaEnabled;
-	}
-	public void setMfaEnabled(Boolean mfaEnabled) {
-		this.mfaEnabled = mfaEnabled;
-	}
 	public Timestamp getCreatedAt() {
 		return createdAt;
 	}
@@ -81,5 +70,4 @@ public class User {
 	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
 }
