@@ -125,11 +125,29 @@ See individual service READMEs for full API details, request/response examples, 
 - All microservices should include:
     - Eureka client dependency in `pom.xml`:
       ```
+      <dependencyManagement>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-dependencies</artifactId>
+                    <version>${spring-cloud.version}</version>
+                    <type>pom</type>
+                    <scope>import</scope>
+                </dependency>
+            </dependencies>
+      </dependencyManagement>
+      ```
+      ```
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
       </dependency>
+      
+      ```    
       ```
+        <spring-cloud.version>2025.0.0</spring-cloud.version>
+      
+      ```    
     - `@EnableDiscoveryClient` on the main Spring Boot class.
 
 - Start Eureka (`8761`) and API Gateway (`8085`) first, then the rest of the services in any order.

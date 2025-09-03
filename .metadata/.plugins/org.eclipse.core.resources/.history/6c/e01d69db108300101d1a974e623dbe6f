@@ -1,5 +1,0 @@
-package com.payeasy.user.repository;
-
-public interface UserRepository {
-
-}
