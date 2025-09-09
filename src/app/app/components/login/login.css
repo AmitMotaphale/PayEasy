@@ -1,54 +1,61 @@
-.login {
-  max-width: 350px;
-  margin: 48px auto;
-  padding: 32px;
-  background-color: #fff;
-  border-radius: 14px;
-  box-shadow: 0 5px 30px rgba(0,0,0,0.07);
+.container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 32px 24px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
 
-.login h2 {
+h2 {
   text-align: center;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+.alert-danger {
   margin-bottom: 16px;
-  color: #574b90;
 }
 
-.login form {
-  display: flex;
-  flex-direction: column;
+.form-group {
+  margin-bottom: 18px;
 }
 
-.login label {
-  margin: 12px 0 6px 0;
+label {
+  display: block;
+  margin-bottom: 8px;
   font-weight: 500;
+  color: #2f3857;
 }
 
-.login input, .login select {
-  padding: 9px;
-  margin-bottom: 14px;
-  border: 1px solid #bdbdbd;
-  border-radius: 6px;
-  font-size: 1rem;
+input, select.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d7dbdf;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 2px;
+  box-sizing: border-box;
   transition: border 0.2s;
 }
 
-.login input:focus, .login select:focus {
-  border-color: #6c63ff;
+input:focus, select:focus {
+  border-color: #0077b6;
   outline: none;
 }
 
-.login button {
-  padding: 12px 0;
-  background: #6c63ff;
-  color: #fff;
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  background: #26327e;
   border: none;
-  font-size: 1rem;
-  border-radius: 8px;
+  color: #fff;
+  border-radius: 4px;
   cursor: pointer;
-  margin-top: 6px;
   transition: background 0.2s;
 }
 
-.login button:hover {
-  background: #4a3f7a;
+.btn-primary:hover {
+  background: #1d255e;
 }

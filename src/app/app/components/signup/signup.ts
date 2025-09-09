@@ -13,14 +13,13 @@ export class Signup {
   name = '';
   email = '';
   password = '';
-  userType = 'user';
+  userType: 'user' | 'business' = 'user';
 
   constructor(private router: Router) {}
 
-  onSignup() {
-    // TODO: Implement signup logic here
-    if(this.name && this.email && this.password){
-      this.router.navigate(['/home']);
-    }
+  signup() {
+    // Save to API or localStorage if needed
+    console.log(`Signed up: ${this.email} as ${this.userType}`);
+    this.router.navigate(['/login']);
   }
 }

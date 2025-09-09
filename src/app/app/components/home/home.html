@@ -1,11 +1,29 @@
-<div class="home">
-  <h1>PayEasy Home</h1>
-  <ul>
-    <li>Send Money</li>
-    <li>Request Payment</li>
-    <li>Transaction History</li>
-    <li>Manage Bank Accounts</li>
-    <li>Offers</li>
-    <li>Settings</li>
+<nav class="navbar">
+  <div class="navbar-left">
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+    <span class="site-name">PayEasy</span>
+  </div>
+
+  <ul class="nav-links">
+    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="/accounts" routerLinkActive="active">Accounts</a></li>
+    <li><a routerLink="/bills" routerLinkActive="active">Bills</a></li>
+    <li><a routerLink="/merchants" routerLinkActive="active">Merchants</a></li>
   </ul>
+
+  <div class="navbar-right" (click)="toggleProfileMenu()">
+    <span class="user-name">{{ userName }}</span>
+    <img src="assets/profile.png" alt="Profile" class="profile-icon" />
+  </div>
+
+  <div class="profile-menu" *ngIf="profileMenuVisible">
+    <button (click)="goToWallet()">Wallet Transactions</button>
+    <button (click)="goToProfile()">Profile</button>
+    <button (click)="logout()">Logout</button>
+  </div>
+</nav>
+
+<div class="main-content">
+  <!-- Your routed pages will be loaded here -->
+  <router-outlet></router-outlet>
 </div>

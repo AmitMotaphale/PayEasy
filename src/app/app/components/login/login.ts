@@ -1,25 +1,30 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-login',
   templateUrl: './login.html',
   styleUrls: ['./login.css'],
   standalone: true,
-  imports: [FormsModule]
+  imports: [FormsModule,NgIf],
 })
 export class Login {
   email = '';
   password = '';
-  userType = 'user';
+  userType:'user' | 'business' = 'user';
+  error=''
 
   constructor(private router: Router) {}
 
-  onLogin() {
-    // TODO: Implement authentication logic here
-    if(this.email && this.password){
-      this.router.navigate(['/home']);
+  login() {
+    // This is dummy logic; replace with real auth
+    if (this.email === 'amit' && this.password === '123' && this.userType === 'user') {
+      this.router.navigate(['/user/home']);
+    } else if (this.email === 'amitb' && this.password === '123' && this.userType === 'business') {
+      this.router.navigate(['/business/home']);
+    } else {
+      this.error = 'Invalid credentials';
     }
   }
 }
