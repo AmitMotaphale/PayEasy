@@ -1,0 +1,7 @@
+<oj-chart id="pieChart" type="pie" data="[[dataProvider]]" animation-on-display="auto" animation-on-data-change="auto"
+    hover-behavior="dim">
+    <template slot="itemTemplate" data-oj-as="item">
+        <oj-chart-item value="[[item.data.value]]" group-id="[[ [item.data.group] ]]"
+            series-id="[[item.data.series]]"></oj-chart-item>
+    </template>
+</oj-chart>

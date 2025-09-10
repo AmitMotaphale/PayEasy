@@ -1,0 +1,8 @@
+<oj-chart id="lineChart" type="line" data="[[dataProvider]]" orientation="[[orientationValue]]"
+    animation-on-display="auto" animation-on-data-change="auto" hover-behavior="dim">
+    <template slot="itemTemplate" data-oj-as="item">
+        <oj-chart-item value="[[item.data.value]]" group-id="[[ [item.data.group] ]]" series-id="[[item.data.series]]">
+        </oj-chart-item>
+    </template>
+</oj-chart>
+<!-- Optional: vertical/horizontal toggle with a button, etc. -->
