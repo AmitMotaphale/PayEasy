@@ -9,11 +9,14 @@ import { Signup } from './app/components/signup/signup';
 import { HomeComponent } from './app/components/home/home';
 import { HomebComponent } from './app/components/homeb/homeb';
 import { AccountComponent } from './app/components/account/account';
+import { MerchantComponent } from './app/components/merchant/merchant';
+import { LayoutComponent } from './app/components/layout/layout';
 
 @NgModule({
   declarations: [
     App,
     Landing,
+    
       
   ],
   imports: [
@@ -24,7 +27,9 @@ import { AccountComponent } from './app/components/account/account';
     HomebComponent,
     Login,
     Signup,
-    AccountComponent 
+    AccountComponent,
+    MerchantComponent,
+    LayoutComponent
   ],
   providers: [],
   bootstrap: [App]
