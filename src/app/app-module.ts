@@ -11,25 +11,30 @@ import { HomebComponent } from './app/components/homeb/homeb';
 import { AccountComponent } from './app/components/account/account';
 import { MerchantComponent } from './app/components/merchant/merchant';
 import { LayoutComponent } from './app/components/layout/layout';
+import { OtpVerify } from './app/components/otp-verify/otp-verify';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     App,
-    Landing,
-    
+    Landing,  
       
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     AppRoutingModule,
     HomeComponent,
     HomebComponent,
     Login,
+    OtpVerify,
     Signup,
     AccountComponent,
     MerchantComponent,
     LayoutComponent
+    
   ],
   providers: [],
   bootstrap: [App]

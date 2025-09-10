@@ -8,11 +8,13 @@ import { HomebComponent } from './app/components/homeb/homeb';   // for business
 import { AccountComponent } from './app/components/account/account';
 import { MerchantComponent } from './app/components/merchant/merchant';
 import { LayoutComponent } from './app/components/layout/layout';
+import { OtpVerify } from './app/components/otp-verify/otp-verify';
 
 const routes: Routes = [
    { path: '', component: Landing },
   { path: 'login', component: Login },
   { path: 'signup', component: Signup },
+  {path: 'otp-verify', component: OtpVerify},
 
   {
     path: 'business/home',

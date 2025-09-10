@@ -7,16 +7,16 @@
       [(ngModel)]="searchTerm"
     />
     <button class="cart-btn" (click)="toggleCart()">
-      🛒 Cart ({{ cart.length }})
+      🛒 Cart ({{ cartItems.length }})
     </button>
   </div>
 
   <!-- Cart Dropdown -->
   <div class="cart-box" *ngIf="showCart">
     <h4>Cart</h4>
-    <div *ngIf="cart.length === 0">No items in cart</div>
+    <div *ngIf="cartItems.length === 0">No items in cart</div>
     <div style="max-height: 250px; overflow-y: auto;">
-    <div *ngFor="let item of cart" class="cart-item">
+    <div *ngFor="let item of cartItems" class="cart-item">
       <img [src]="item.image" alt="{{ item.name }}" />
       <div class="info">
         <h5>{{ item.name }}</h5>
@@ -31,7 +31,7 @@
     </div>
     </div>
 
-    <div class="cart-total" *ngIf="cart.length">
+    <div class="cart-total" *ngIf="cartItems.length">
       <strong>Total: ₹{{ totalPrice.toFixed(2) }}</strong>
       <button (click)="checkout()">Checkout</button>
     </div>
@@ -39,7 +39,7 @@
 
   <!-- Product Cards -->
   <div class="product-grid">
-    <div class="product-card" *ngFor="let product of filteredProducts">
+    <div class="product-card" *ngFor="let product of filteredProducts; trackBy: trackById">
       <img [src]="product.image" alt="{{ product.name }}" />
       <h3>{{ product.name }}</h3>
       <p>{{ product.description }}</p>
