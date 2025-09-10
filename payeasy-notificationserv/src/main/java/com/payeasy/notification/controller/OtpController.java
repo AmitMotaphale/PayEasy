@@ -7,6 +7,7 @@ import com.payeasy.notification.service.EmailService;
 
 @RestController
 @RequestMapping("/otp")
+@CrossOrigin(origins = "http://localhost:4200")
 public class OtpController {
 
     private final EmailService emailService;
