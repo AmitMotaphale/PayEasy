@@ -30,7 +30,7 @@ public class Product {
 	@DecimalMin(value = "0.0", inclusive = false, message = "Price must be greater than zero")
     private Double price;
 	
-	@Size(max = 500, message = "Image URL can be at most 500 characters")
+//	@Size(max = 500000, message = "Image URL can be at most 500 characters")
     private String imageUrl;
 	
     private Timestamp createdAt;
