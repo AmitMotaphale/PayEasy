@@ -1,11 +1,29 @@
-<div class="container">
-  <h2>Business Dashboard</h2>
-  <nav class="nav-menu">
-    <ul>
-      <li><a routerLink="/bankaccount">Bank Account</a></li>
-      <li><a routerLink="/products">Products</a></li>
-      <li><a routerLink="/transactions">Transactions</a></li>
-      <!-- Add more business relevant pages here -->
-    </ul>
-  </nav>
+<nav class="navbar">
+  <div class="navbar-left">
+    <img src="../../../../../assets/Logo.png" alt="Logo" class="logo" />
+    <span class="brand-name">BusinessName</span>
+
+    <button class="nav-item" (click)="navigateTo('/business/home')">Home</button>
+    <button class="nav-item" (click)="navigateTo('/business/accounts')">Accounts</button>
+    <button class="nav-item" (click)="navigateTo('/business/products')">Products</button>
+  </div>
+
+  <div class="navbar-right">
+    <span class="user-name">{{ userName }}</span>
+    <button class="profile-icon" (click)="toggleProfileMenu()" aria-label="User Profile">
+      <img src="../../../../../assets/profile.png" alt="Profile" />
+    </button>
+
+    <div class="profile-menu" *ngIf="profileMenuVisible">
+      <button (click)="navigateTo('/business/wallet-transactions')">Wallet Transactions</button>
+      <button (click)="navigateTo('/business/profile')">Profile</button>
+      <button (click)="navigateTo('/logout')">Logout</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Main content placeholder -->
+<div class="content">
+  <h1>Welcome to Business Home Page</h1>
+  <p>This is your dashboard.</p>
 </div>

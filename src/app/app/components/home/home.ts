@@ -10,14 +10,16 @@
 // }
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppRoutingModule } from "../../../app-routing-module";
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+// import { AppRoutingModule } from "../../../app-routing-module";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.html',
   standalone: true,
   styleUrls: ['./home.css'],
-  imports: [AppRoutingModule]
+  imports: [RouterModule, CommonModule]
 })
 export class HomeComponent {
   userName: string = 'John Doe';
@@ -32,6 +34,11 @@ export class HomeComponent {
   goToWallet() {
     this.profileMenuVisible = false;
     this.router.navigate(['/wallet']);
+  }
+
+  goToTransactions() {
+    this.profileMenuVisible = false;
+    this.router.navigate(['/transactions']);
   }
 
   goToProfile() {

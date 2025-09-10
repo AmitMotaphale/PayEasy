@@ -8,13 +8,13 @@ import { Login } from './app/components/login/login';
 import { Signup } from './app/components/signup/signup';
 import { HomeComponent } from './app/components/home/home';
 import { HomebComponent } from './app/components/homeb/homeb';
+import { AccountComponent } from './app/components/account/account';
 
 @NgModule({
   declarations: [
     App,
     Landing,
-    
-    
+      
   ],
   imports: [
     BrowserModule,
@@ -23,7 +23,8 @@ import { HomebComponent } from './app/components/homeb/homeb';
     HomeComponent,
     HomebComponent,
     Login,
-    Signup
+    Signup,
+    AccountComponent 
   ],
   providers: [],
   bootstrap: [App]
