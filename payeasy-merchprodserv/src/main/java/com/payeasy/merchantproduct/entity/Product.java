@@ -29,6 +29,10 @@ public class Product {
 	@NotNull(message = "Price is required")
 	@DecimalMin(value = "0.0", inclusive = false, message = "Price must be greater than zero")
     private Double price;
+	
+//	@Size(max = 500000, message = "Image URL can be at most 500 characters")
+    private String imageUrl;
+	
     private Timestamp createdAt;
 	public Long getProductId() {
 		return productId;
@@ -60,6 +64,13 @@ public class Product {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+	public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 	public Timestamp getCreatedAt() {
 		return createdAt;
 	}

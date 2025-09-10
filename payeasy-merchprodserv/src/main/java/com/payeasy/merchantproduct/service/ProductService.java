@@ -19,6 +19,11 @@ public class ProductService {
 		product.setCreatedAt(new Timestamp(System.currentTimeMillis()));
 		return productRepository.save(product);
 	}
+	
+	public List<Product> getAllProducts() {
+	    return productRepository.findAll();
+	}
+	
 	public List<Product> getProductsByMerchant(Long merchantId){
 		return productRepository.findByMerchantId(merchantId);
 	}
@@ -32,6 +37,7 @@ public class ProductService {
             product.setProductName(productDetails.getProductName());
             product.setDescription(productDetails.getDescription());
             product.setPrice(productDetails.getPrice());
+            product.setImageUrl(productDetails.getImageUrl());
             return productRepository.save(product);
         }
         return null;
