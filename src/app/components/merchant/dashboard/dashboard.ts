@@ -2,29 +2,31 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MerchNavbar } from '../../shared/merch-navbar/merch-navbar';
 import { BankAccountComponent } from './bank-account/bank-account';
-import { OverviewComponent } from './overview/overview';
+import { ReportsComponent } from './reports/reports';
 import { TransactionsComponent } from './transactions/transactions';
 import { ProductsComponent } from './products/products';
 import { SettingsComponent } from './settings/settings';
+import { TopNavbarComponent } from '../../shared/top-navbar/top-navbar';
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css',
+  styleUrls: ['./dashboard.css'],
    imports: [
     CommonModule,
     MerchNavbar,
+    TopNavbarComponent,
     BankAccountComponent,
-    OverviewComponent,
+    ReportsComponent,
     TransactionsComponent,
     ProductsComponent,
     SettingsComponent,
   ],
 })
-export class Dashboard {
-  selectedMenu = 'overview';
+export class DashboardComponent  {
+  selectedMenu = 'reports';
   onMenuChange(menu: string) {
     this.selectedMenu = menu;
   }

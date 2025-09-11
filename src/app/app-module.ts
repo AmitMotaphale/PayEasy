@@ -10,19 +10,21 @@ import { UserLoginComponent } from './components/user/login/login';
 import { MerchantLoginComponent } from './components/merchant/login/login';
 import { UserSignupComponent } from './components/user/signup/signup';
 import { MerchantSignupComponent } from './components/merchant/signup/signup';
-import { Dashboard } from './components/merchant/dashboard/dashboard';
+import { DashboardComponent } from './components/merchant/dashboard/dashboard';
 import { MerchNavbar } from './components/shared/merch-navbar/merch-navbar';
-import { OverviewComponent } from './components/merchant/dashboard/overview/overview';
+import { ReportsComponent } from './components/merchant/dashboard/reports/reports';
 import { TransactionsComponent } from './components/merchant/dashboard/transactions/transactions';
 import { ProductsComponent } from './components/merchant/dashboard/products/products';
 import { SettingsComponent } from './components/merchant/dashboard/settings/settings';
 import { BankAccountComponent } from './components/merchant/dashboard/bank-account/bank-account';
+import { TopNavbarComponent } from './components/shared/top-navbar/top-navbar';
 
 
 @NgModule({
   declarations: [
     App,
-    Landing
+    Landing,
+    
       
   ],
   imports: [
@@ -32,14 +34,15 @@ import { BankAccountComponent } from './components/merchant/dashboard/bank-accou
     AppRoutingModule,
 
     //standalone components are here 
-    Dashboard,
+    DashboardComponent,
     UserSignupComponent,
     UserLoginComponent,
     OtpVerify,
     MerchantLoginComponent,
     MerchantSignupComponent,
     MerchNavbar,
-    OverviewComponent,
+    TopNavbarComponent,
+    ReportsComponent,
     TransactionsComponent,
     BankAccountComponent,
     ProductsComponent,

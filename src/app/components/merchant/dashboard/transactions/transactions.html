@@ -1,1 +1,48 @@
-<p>transactions works!</p>
+<div class="transactions-container">
+  <h2>Transactions</h2>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <input
+      type="text"
+      placeholder="Search by Product, ID, or Customer..."
+      [(ngModel)]="searchText"
+      (input)="applyFilter()"
+    />
+
+    <select [(ngModel)]="selectedStatus" (change)="applyFilter()">
+      <option value="">All Status</option>
+      <option value="Success">Success</option>
+      <option value="Pending">Pending</option>
+      <option value="Failed">Failed</option>
+    </select>
+  </div>
+
+  <!-- Transactions Table -->
+  <table class="transactions-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Product</th>
+        <th>Purchased By</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let txn of filteredTransactions">
+        <td>{{ txn.id }}</td>
+        <td>{{ txn.product }}</td>
+        <td>{{ txn.purchasedBy }}</td>
+        <td>₹ {{ txn.amount }}</td>
+        <td>{{ txn.date }}</td>
+        <td>
+          <span class="status" [ngClass]="txn.status.toLowerCase()">
+            {{ txn.status }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

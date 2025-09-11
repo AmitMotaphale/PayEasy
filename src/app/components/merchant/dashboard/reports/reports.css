@@ -1,0 +1,139 @@
+/* General Layout */
+.reports-container {
+  padding: 30px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+/* Welcome Banner */
+.welcome-banner {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  padding: 25px;
+  border-radius: 14px;
+  color: white;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+}
+
+.welcome-banner h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.welcome-banner p {
+  margin: 5px 0 0;
+  font-size: 14px;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2d6cdf;
+}
+
+/* Section Titles */
+.section-title {
+  margin: 20px 0 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Graphs */
+.graphs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.graph-card {
+  background: white;
+  height: 220px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #777;
+  font-size: 16px;
+  border: 1px solid #eee;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+/* Transactions */
+.transactions-section {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transactions-table th,
+.transactions-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.transactions-table th {
+  background-color: #f9fafc;
+  font-weight: 600;
+  color: #555;
+}
+
+/* Status Tags */
+.status {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status.success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status.failed {
+  background: #f8d7da;
+  color: #721c24;
+}

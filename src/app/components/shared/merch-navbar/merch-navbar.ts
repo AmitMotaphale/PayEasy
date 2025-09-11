@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class MerchNavbar {
   isCollapsed = true;
-  activeMenu = 'overview';
+  activeMenu = 'report';
 
   @Output() menuChange = new EventEmitter<string>();
 

@@ -12,7 +12,7 @@ import { MerchantSignupComponent } from './components/merchant/signup/signup';
 // Import other components you already use
 import { Landing } from './components/landing/landing';
 import { OtpVerify } from './components/otp-verify/otp-verify';
-import { Dashboard } from './components/merchant/dashboard/dashboard';
+import { DashboardComponent } from './components/merchant/dashboard/dashboard';
 import { MerchantAuthGuard } from './guards/merchant-auth-guard';
 
 const routes: Routes = [
@@ -35,7 +35,7 @@ const routes: Routes = [
   //Gaurd links from here :)
   {
     path: 'merchant/dashboard',
-    component: Dashboard,
+    component: DashboardComponent,
     canActivate: [MerchantAuthGuard]  // Apply the guard here
   },
 

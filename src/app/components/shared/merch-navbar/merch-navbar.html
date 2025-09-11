@@ -4,9 +4,9 @@
     &#9776;
   </div>
   <ul class="nav-list">
-    <li (click)="selectMenu('overview')" [class.active]="activeMenu === 'overview'">
+    <li (click)="selectMenu('reports')" [class.active]="activeMenu === 'report'">
       <span class="icon">📊</span>
-      <span class="label" *ngIf="!isCollapsed">Overview</span>
+      <span class="label" *ngIf="!isCollapsed">Reports</span>
     </li>
     <li (click)="selectMenu('bank')" [class.active]="activeMenu === 'bank'">
       <span class="icon">🏦</span>

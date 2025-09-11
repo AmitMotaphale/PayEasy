@@ -1,0 +1,14 @@
+<header class="top-navbar">
+      <header class="top-navbar">
+</header>
+  <div class="profile-container" (click)="toggleDropdown()">
+    <img src="https://img.myloview.com/murals/default-avatar-profile-icon-vector-social-media-user-symbol-image-700-244492311.jpg" alt="User Avatar" class="avatar" />
+    <span class="username">Merchant</span>
+    <span class="caret">▼</span>
+  </div>
+
+  <ul class="dropdown" *ngIf="dropdownOpen">
+    <li (click)="editProfile()">✏️ Edit Profile</li>
+    <li (click)="logout()">🚪 Logout</li>
+  </ul>
+</header>
