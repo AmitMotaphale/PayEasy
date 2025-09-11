@@ -1,1 +1,39 @@
-<p>settings works!</p>
+<div class="settings-container">
+  <h2>Edit Profile</h2>
+
+  <form #settingsForm="ngForm" (ngSubmit)="updateProfile()">
+    <div>
+      <label>Merchant Name</label>
+      <input [(ngModel)]="merchant.merchantName" name="merchantName" required maxlength="100" />
+    </div>
+
+    <div>
+      <label>Contact Number</label>
+      <input
+        [(ngModel)]="merchant.contactNumber"
+        name="contactNumber"
+        pattern="^[6-9]\\d{9}$"
+        maxlength="10"
+        required
+      />
+    </div>
+
+    <div>
+      <label>Email</label>
+      <input type="email" [(ngModel)]="merchant.email" name="email" required />
+    </div>
+
+    <div>
+      <label>Password</label>
+      <input type="password" [(ngModel)]="merchant.password" name="password" />
+      <small>Leave blank if you do not want to change</small>
+    </div>
+
+    <button type="submit">Save Changes</button>
+  </form>
+  <hr />
+  <button (click)="deleteAccount()" class="delete-btn">Delete Account</button>
+  <div *ngIf="showThankYouMessage" class="thank-you-message">
+    Thank you for being part of PayEasy! Your account data will be deleted within seven days.
+  </div>
+</div>
