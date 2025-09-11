@@ -3,16 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { Landing } from './app/components/landing/landing';
-import { Login } from './app/components/login/login';
-import { Signup } from './app/components/signup/signup';
-import { HomeComponent } from './app/components/home/home';
-import { HomebComponent } from './app/components/homeb/homeb';
-import { AccountComponent } from './app/components/account/account';
-import { MerchantComponent } from './app/components/merchant/merchant';
-import { LayoutComponent } from './app/components/layout/layout';
-import { OtpVerify } from './app/components/otp-verify/otp-verify';
+import { Landing } from './components/landing/landing';
+import { Signup } from './components/signup/signup';
+import { HomeComponent } from './components/home/home';
+import { HomebComponent } from './components/homeb/homeb';
+import { AccountComponent } from './components/account/account';
+import { MerchantComponent } from './components/merchant/merchant';
+import { LayoutComponent } from './components/layout/layout';
+import { OtpVerify } from './components/otp-verify/otp-verify';
 import { HttpClientModule } from '@angular/common/http';
+import { Login } from './components/login/login';
 
 
 @NgModule({

@@ -21,4 +21,19 @@ login(email: string, password: string): Observable<any> {
   register(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/payeasy-userserv/api/users/register`, data);
   }
+
+  loginMerch(email: string, password: string): Observable<string> {
+  return this.http.post(
+    `${this.baseUrl}/payeasy-mercprodserv/api/merchants/login`,
+    { email, password },
+    { responseType: 'text' } // handle plain text response
+  );
+}
+
+registerMerch(merchantData: any): Observable<any> {
+  return this.http.post(
+    `${this.baseUrl}/payeasy-mercprodserv/api/merchants/register`,
+    merchantData
+  );
+}
 }
