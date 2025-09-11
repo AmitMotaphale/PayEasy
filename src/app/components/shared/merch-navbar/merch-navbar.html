@@ -1,0 +1,33 @@
+<!-- <p>merch-navbar works!</p> -->
+<nav class="sidebar" [class.collapsed]="isCollapsed">
+  <div class="toggle-btn" (click)="toggleSidebar()" aria-label="Toggle sidebar menu">
+    &#9776;
+  </div>
+  <ul class="nav-list">
+    <li (click)="selectMenu('overview')" [class.active]="activeMenu === 'overview'">
+      <span class="icon">📊</span>
+      <span class="label" *ngIf="!isCollapsed">Overview</span>
+    </li>
+    <li (click)="selectMenu('bank')" [class.active]="activeMenu === 'bank'">
+      <span class="icon">🏦</span>
+      <span class="label" *ngIf="!isCollapsed">Bank Account</span>
+    </li>
+    <li (click)="selectMenu('transactions')" [class.active]="activeMenu === 'transactions'">
+      <span class="icon">💳</span>
+      <span class="label" *ngIf="!isCollapsed">Transactions</span>
+    </li>
+    <li (click)="selectMenu('products')" [class.active]="activeMenu === 'products'">
+      <span class="icon">📦</span>
+      <span class="label" *ngIf="!isCollapsed">Products</span>
+    </li>
+    <li (click)="selectMenu('settings')" [class.active]="activeMenu === 'settings'">
+      <span class="icon">⚙️</span>
+      <span class="label" *ngIf="!isCollapsed">Settings</span>
+    </li>
+    <li (click)="logout()" class="logout-btn">
+      <span class="icon">🚪</span>
+      <span class="label" *ngIf="!isCollapsed">Logout</span>
+    </li>
+  </ul>
+
+</nav>

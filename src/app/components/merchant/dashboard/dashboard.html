@@ -1,0 +1,11 @@
+<div class="dashboard-container">
+  <app-merch-navbar (menuChange)="onMenuChange($event)"></app-merch-navbar>
+
+  <main class="dashboard-content">
+    <app-overview *ngIf="selectedMenu === 'overview'"></app-overview>
+    <app-bank-account *ngIf="selectedMenu === 'bank'"></app-bank-account>
+    <app-transactions *ngIf="selectedMenu === 'transactions'"></app-transactions>
+    <app-products *ngIf="selectedMenu === 'products'"></app-products>
+    <app-settings *ngIf="selectedMenu === 'settings'"></app-settings>
+  </main>
+</div>

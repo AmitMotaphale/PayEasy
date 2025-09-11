@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-otp-verify',
+  standalone: true,
   template: `
   <div class="otp-container">
     <img src="assets/logo.png" alt="Logo" class="otp-logo" />
@@ -39,7 +40,6 @@ import { CommonModule } from '@angular/common';
       font-size: 16px;
     }
   `],
-  standalone: true,
   imports: [FormsModule ,CommonModule],
 })
 export class OtpVerify {

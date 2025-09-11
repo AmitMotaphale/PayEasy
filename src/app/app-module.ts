@@ -4,21 +4,25 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Landing } from './components/landing/landing';
-import { Signup } from './components/signup/signup';
-import { HomeComponent } from './components/home/home';
-import { HomebComponent } from './components/homeb/homeb';
-import { AccountComponent } from './components/account/account';
-import { MerchantComponent } from './components/merchant/merchant';
-import { LayoutComponent } from './components/layout/layout';
 import { OtpVerify } from './components/otp-verify/otp-verify';
 import { HttpClientModule } from '@angular/common/http';
-import { Login } from './components/login/login';
+import { UserLoginComponent } from './components/user/login/login';
+import { MerchantLoginComponent } from './components/merchant/login/login';
+import { UserSignupComponent } from './components/user/signup/signup';
+import { MerchantSignupComponent } from './components/merchant/signup/signup';
+import { Dashboard } from './components/merchant/dashboard/dashboard';
+import { MerchNavbar } from './components/shared/merch-navbar/merch-navbar';
+import { OverviewComponent } from './components/merchant/dashboard/overview/overview';
+import { TransactionsComponent } from './components/merchant/dashboard/transactions/transactions';
+import { ProductsComponent } from './components/merchant/dashboard/products/products';
+import { SettingsComponent } from './components/merchant/dashboard/settings/settings';
+import { BankAccountComponent } from './components/merchant/dashboard/bank-account/bank-account';
 
 
 @NgModule({
   declarations: [
     App,
-    Landing,  
+    Landing
       
   ],
   imports: [
@@ -26,15 +30,20 @@ import { Login } from './components/login/login';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    HomeComponent,
-    HomebComponent,
-    Login,
+
+    //standalone components are here 
+    Dashboard,
+    UserSignupComponent,
+    UserLoginComponent,
     OtpVerify,
-    Signup,
-    AccountComponent,
-    MerchantComponent,
-    LayoutComponent
-    
+    MerchantLoginComponent,
+    MerchantSignupComponent,
+    MerchNavbar,
+    OverviewComponent,
+    TransactionsComponent,
+    BankAccountComponent,
+    ProductsComponent,
+    SettingsComponent
   ],
   providers: [],
   bootstrap: [App]

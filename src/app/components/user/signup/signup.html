@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>User Signup</h2>
+  <form (ngSubmit)="signup()">
+    <div class="form-group">
+      <label>Full Name</label>
+      <input [(ngModel)]="fullName" name="fullname" required class="form-control" />
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input [(ngModel)]="email" name="email" required class="form-control" />
+    </div>
+    <div class="form-group">
+      <label>Mobile</label>
+      <input [(ngModel)]="mobile" name="mobile" type="number" required class="form-control" />
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input [(ngModel)]="passwordHash" name="password" type="password" required class="form-control" />
+    </div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <button class="btn btn-success">Sign Up</button>
+  </form>
+  <p class="mt-2">
+    Existing user? <a routerLink="/user/login">Login here</a>
+  </p>
+</div>
