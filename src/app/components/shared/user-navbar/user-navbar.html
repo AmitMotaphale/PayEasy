@@ -5,11 +5,11 @@
 
   <div class="nav-center">
     <ul class="nav-links">
-      <li><a routerLink="/user/home">Home</a></li>
-      <li><a routerLink="/user/Bills">Pay Bills</a></li>
-      <li><a routerLink="/user/bank-accounts">Add Bank</a></li>
-      <li><a routerLink="/user/products">Products</a></li>
-      <li><a routerLink="/user/transactions">Past Orders</a></li>
+      <li (click)="selectMenu('userhome')" [class.active]="activeMenu === 'userhome'"><a>Home</a></li>
+      <li (click)="selectMenu('bills')" [class.active]="activeMenu === 'bills'"><a>Pay Bills</a></li>
+      <li (click)="selectMenu('bank')" [class.active]="activeMenu === 'bank'"><a>Add Bank</a></li>
+      <li (click)="selectMenu('Userproduct')" [class.active]="activeMenu === 'Userproduct'"><a>Products</a></li>
+      <li (click)="selectMenu('transactions')" [class.active]="activeMenu === 'transactions'"><a>Transaction History</a></li>
     </ul>
   </div>
 

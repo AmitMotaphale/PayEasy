@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-user-transactions',
+  selector: 'app-usertransactions',
   imports: [],
   templateUrl: './user-transactions.html',
   styleUrl: './user-transactions.css'

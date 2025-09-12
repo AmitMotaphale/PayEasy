@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-navbar.css']
 })
 export class UserNavbar {
+  activeMenu = 'bills';
   dropdownOpen = false;
 
 @Output() menuChange = new EventEmitter<string>(); 
@@ -18,12 +19,14 @@ export class UserNavbar {
     this.dropdownOpen = !this.dropdownOpen;
   }
 
+
   logout() {
     localStorage.clear();
     this.router.navigateByUrl('/user/login');
   }
   // Call this on link click
   selectMenu(menu: string) {
+    this.activeMenu = menu;
     this.menuChange.emit(menu);
   }
 }

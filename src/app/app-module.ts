@@ -19,10 +19,11 @@ import { BankAccountComponent } from './components/merchant/dashboard/bank-accou
 import { TopNavbarComponent } from './components/shared/top-navbar/top-navbar';
 import { OtpVerify } from './components/user/otp-verify/otp-verify';
 import { UserNavbar } from './components/shared/user-navbar/user-navbar';
-import { BillsComponent } from './components/user/home/bills/bills';
-import { EcommerceComponents } from './components/user/home/ecommerce/ecommerce';
+import { UserBillsComponent } from './components/user/home/bills/bills';
+import { ProductEcommerceComponents } from './components/user/home/ecommerce/ecommerce';
 import { UserTransactionsComponent } from './components/user/home/user-transactions/user-transactions';
 import { UserbankAccountComponent } from './components/user/home/userbank-account/userbank-account';
+import { UserhomeComponent } from './components/user/home/userhome/userhome';
 
 
 @NgModule({
@@ -30,14 +31,14 @@ import { UserbankAccountComponent } from './components/user/home/userbank-accoun
     App,
     Landing,
     
-      
+    
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-
+    
     //standalone components are here 
     DashboardComponent,
     UserSignupComponent,
@@ -45,12 +46,12 @@ import { UserbankAccountComponent } from './components/user/home/userbank-accoun
     OtpVerify,
     MerchantLoginComponent,
     MerchantSignupComponent,
-
+    
     //Nav Bar
     MerchNavbar,
     TopNavbarComponent,
     UserNavbar,
-
+    
     //Merchant ke Components
     UserLoginComponent,
     ReportsComponent,
@@ -58,11 +59,12 @@ import { UserbankAccountComponent } from './components/user/home/userbank-accoun
     BankAccountComponent,
     ProductsComponent,
     SettingsComponent,
-
+    
     //User ke Components
-    BillsComponent,
-    EcommerceComponents,
-    UserTransactionsComponent,
+    UserBillsComponent,
+    ProductEcommerceComponents, //unique ke liya Ecommerce add kiya 
+    UserTransactionsComponent, //transction unique ke liya
+    UserhomeComponent,
     UserbankAccountComponent
   ],
   providers: [],

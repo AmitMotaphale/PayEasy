@@ -2,9 +2,10 @@
  <div class="dashboard-container">
   <app-user-navbar (menuChange)="onMenuChange($event)"></app-user-navbar>
       <main class="dashboard-content">
-    <app-bills *ngIf="selectedMenu === 'Bills'"></app-bills>
-    <app-ecommerce *ngIf="selectedMenu === 'reports'"></app-ecommerce>
-    <app-user-transactions *ngIf="selectedMenu === 'bank'"></app-user-transactions>
-    <app-userbank-account *ngIf="selectedMenu === 'transactions'"></app-userbank-account>
+    <app-userhome *ngIf="selectedMenu === 'userhome'"></app-userhome>
+    <app-bills *ngIf="selectedMenu === 'bills'"></app-bills>
+    <app-userbank-account *ngIf="selectedMenu === 'bank'"></app-userbank-account>
+    <app-ecommerce *ngIf="selectedMenu === 'Userproduct'"></app-ecommerce>
+    <app-usertransactions *ngIf="selectedMenu === 'transactions'"></app-usertransactions>
     </main>
 </div>
