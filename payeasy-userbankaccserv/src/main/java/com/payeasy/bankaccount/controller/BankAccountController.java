@@ -18,7 +18,7 @@ import com.payeasy.bankaccount.entity.BankAccount;
 import com.payeasy.bankaccount.service.BankAccountService;
 
 @RestController
-@RequestMapping("/api/bankaccounts")
+@RequestMapping("/api/userbankaccounts")
 public class BankAccountController {
 	
 	@Autowired
