@@ -1,4 +1,9 @@
 <div class="settings-container">
+  <!-- Back button -->
+  <button *ngIf="showBackButton" (click)="goBackToDashboard()" class="back-btn">
+    ← Back to Dashboard
+  </button>
+
   <h2>Edit Profile</h2>
 
   <form #settingsForm="ngForm" (ngSubmit)="updateProfile()">
@@ -31,8 +36,11 @@
 
     <button type="submit">Save Changes</button>
   </form>
+
   <hr />
+
   <button (click)="deleteAccount()" class="delete-btn">Delete Account</button>
+
   <div *ngIf="showThankYouMessage" class="thank-you-message">
     Thank you for being part of PayEasy! Your account data will be deleted within seven days.
   </div>

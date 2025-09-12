@@ -16,6 +16,7 @@ import { DashboardComponent } from './components/merchant/dashboard/dashboard';
 import { MerchantAuthGuard } from './guards/merchant-auth-guard';
 import { Home } from './components/user/home/home';
 import { UserAuthGuard } from './guards/user-auth-guard';
+import { SettingsComponent } from './components/merchant/dashboard/settings/settings';
 
 const routes: Routes = [
   // Landing page
@@ -41,6 +42,12 @@ const routes: Routes = [
   {
     path: 'merchant/dashboard',
     component: DashboardComponent,
+    canActivate: [MerchantAuthGuard]  // Apply the guard here
+  },
+
+  {
+    path: 'merchant/dashboard/settings',
+    component: SettingsComponent,
     canActivate: [MerchantAuthGuard]  // Apply the guard here
   },
 
