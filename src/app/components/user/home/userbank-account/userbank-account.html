@@ -1,1 +1,86 @@
-<p>userbank-account works!</p>
+<div class="bank-account-container">
+  <h2>Bank Accounts</h2>
+
+  <form (submit)="addBankAccount($event)" #bankForm="ngForm" class="bank-form">
+    <div class="form-group">
+      <label for="accountNumber">Account Number</label>
+      <input
+        type="text"
+        id="accountNumber"
+        name="accountNumber"
+        [(ngModel)]="newAccount.accountNumber"
+        required
+        minlength="10"
+        maxlength="20"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="bankName">Bank Name</label>
+      <input
+        type="text"
+        id="bankName"
+        name="bankName"
+        [(ngModel)]="newAccount.bankName"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="ifscCode">IFSC Code</label>
+      <input
+        type="text"
+        id="ifscCode"
+        name="ifscCode"
+        [(ngModel)]="newAccount.ifscCode"
+        required
+        minlength="11"
+        maxlength="11"
+      />
+    </div>
+
+    <button type="submit">Add Account</button>
+  </form>
+
+  <table class="bank-accounts-table" *ngIf="bankAccounts.length > 0">
+    <thead>
+      <tr>
+        <th>Account Number</th>
+        <th>Bank Name</th>
+        <th>IFSC Code</th>
+        <th>Actions</th>
+        <th>Primary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let account of bankAccounts">
+      <td>
+        <span *ngIf="!account.editMode">{{ account.accountNumber }}</span>
+        <input *ngIf="account.editMode" [(ngModel)]="account.accountNumber" />
+      </td>
+      <td>
+        <span *ngIf="!account.editMode">{{ account.bankName }}</span>
+        <input *ngIf="account.editMode" [(ngModel)]="account.bankName" />
+      </td>
+      <td>
+        <span *ngIf="!account.editMode">{{ account.ifscCode }}</span>
+        <input *ngIf="account.editMode" [(ngModel)]="account.ifscCode" />
+      </td>
+    <td class="action-buttons">
+        <ng-container *ngIf="!account.editMode; else editModeButtons">
+          <button (click)="account.editMode = true">Edit</button>
+             </ng-container>
+             <ng-template #editModeButtons>
+          <button (click)="saveBankAccount(account)">Save</button>
+        </ng-template>
+        <button (click)="deleteBankAccount(account.bankId!)">Delete</button>
+      </td>
+      <td>
+      <input type="checkbox" [(ngModel)]="account.isPrimary" (change)="confirmTogglePrimary(account,$event)" />
+    </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="bankAccounts.length === 0">No bank accounts added yet.</p>
+</div>

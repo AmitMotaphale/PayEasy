@@ -1,0 +1,95 @@
+.bank-account-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  overflow-x: auto;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Optional: Prevent buttons from stacking weirdly on narrow screens */
+.action-buttons button {
+  flex: 1 1 auto;
+}
+
+.bank-form {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  flex: 1 1 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+input {
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-end;
+  height: fit-content;
+  margin-top: auto;
+}
+
+button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.bank-accounts-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* Force all columns to respect width */
+  overflow-x: auto;
+}
+
+.bank-accounts-table th,
+.bank-accounts-table td {
+  border: 1px solid #ddd;
+  padding: 0.7rem 1rem;
+  text-align: left;
+}
+
+.bank-accounts-table th {
+  background-color: #f2f2f2;
+}
+
+button:hover:not(:disabled) {
+  background-color: #1f6391;
+}
+
+.bank-accounts-table td input {
+  width: 100%; /* Force input fields to fit inside table cells */
+  box-sizing: border-box;
+  padding: 0.4rem;
+  font-size: 1rem;
+}

@@ -123,8 +123,4 @@ confirmTogglePrimary(account: any, event: Event) {
     });
   }
 }
-
-
-
-
 }
