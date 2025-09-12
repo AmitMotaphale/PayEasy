@@ -4,10 +4,18 @@ import { Auth } from '../../../services/auth';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+export interface UserLoginResponse {
+  userId: number;
+  fullName: string;
+  email: string;
+  mobile: string;
+  message: string;
+}
+
 @Component({
   selector: 'app-user-login',
   templateUrl: './login.html',
-  styleUrl: './login.css', // use your login.css path
+  styleUrls: ['./login.css'], // use your login.css path
   standalone: true,
   imports: [FormsModule, CommonModule],
 })
@@ -28,10 +36,15 @@ export class UserLoginComponent {
     this.otpSent = false;
 
     this.auth.loginUser(this.email, this.password).subscribe({
-      next: (res) => {
-        if (res.ok === false) {
-          this.error = res.message || 'Invalid credentials';
-          return;
+      next: (res: UserLoginResponse) => {
+       if (res.userId !== undefined && res.fullName && res.email && res.mobile) {
+         localStorage.setItem('userId', res.userId.toString()); 
+         localStorage.setItem('fullName', res.fullName); 
+         localStorage.setItem('email', res.email); 
+         localStorage.setItem('mobile', res.mobile.toString()); 
+        } 
+        else { 
+          console.error('Invalid user data received:', res); 
         }
         this.router.navigate(['/otp-verify'], { state: { email: this.email } })
           .catch(err => console.error('Navigation error:', err));

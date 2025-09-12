@@ -11,8 +11,7 @@ export class Auth {
 loginUser(email: string, password: string): Observable<any> {
   return this.http.post(
     `${this.baseUrl}/payeasy-userserv/api/users/login`,
-    { email, password },
-    { responseType: 'text' }  // tell Angular to expect response as plain text
+    { email, password }
   );
 }
 // OTP verify endpoint on different service

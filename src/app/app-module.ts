@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Landing } from './components/landing/landing';
-import { OtpVerify } from './components/otp-verify/otp-verify';
 import { HttpClientModule } from '@angular/common/http';
 import { UserLoginComponent } from './components/user/login/login';
 import { MerchantLoginComponent } from './components/merchant/login/login';
@@ -18,6 +17,8 @@ import { ProductsComponent } from './components/merchant/dashboard/products/prod
 import { SettingsComponent } from './components/merchant/dashboard/settings/settings';
 import { BankAccountComponent } from './components/merchant/dashboard/bank-account/bank-account';
 import { TopNavbarComponent } from './components/shared/top-navbar/top-navbar';
+import { OtpVerify } from './components/user/otp-verify/otp-verify';
+import { UserNavbar } from './components/shared/user-navbar/user-navbar';
 
 
 @NgModule({
@@ -42,6 +43,8 @@ import { TopNavbarComponent } from './components/shared/top-navbar/top-navbar';
     MerchantSignupComponent,
     MerchNavbar,
     TopNavbarComponent,
+    UserNavbar,
+    UserLoginComponent,
     ReportsComponent,
     TransactionsComponent,
     BankAccountComponent,

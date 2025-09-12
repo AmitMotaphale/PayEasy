@@ -11,9 +11,11 @@ import { MerchantSignupComponent } from './components/merchant/signup/signup';
 
 // Import other components you already use
 import { Landing } from './components/landing/landing';
-import { OtpVerify } from './components/otp-verify/otp-verify';
+import { OtpVerify } from './components/user/otp-verify/otp-verify';
 import { DashboardComponent } from './components/merchant/dashboard/dashboard';
 import { MerchantAuthGuard } from './guards/merchant-auth-guard';
+import { Home } from './components/user/home/home';
+import { UserAuthGuard } from './guards/user-auth-guard';
 
 const routes: Routes = [
   // Landing page
@@ -37,6 +39,12 @@ const routes: Routes = [
     path: 'merchant/dashboard',
     component: DashboardComponent,
     canActivate: [MerchantAuthGuard]  // Apply the guard here
+  },
+
+  {
+    path: 'user/home',
+    component: Home,
+    canActivate: [UserAuthGuard]  // Apply the guard here
   },
 
   // Catch-all redirect to landing or login

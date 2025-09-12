@@ -1,0 +1,26 @@
+<nav class="navbar">
+  <div class="nav-left">
+    <div class="logo">PayEasy</div>
+  </div>
+
+  <div class="nav-center">
+    <ul class="nav-links">
+      <li><a routerLink="/user/home">Home</a></li>
+      <li><a routerLink="/user/bank-accounts">Bank Accounts</a></li>
+      <li><a routerLink="/user/products">Products</a></li>
+      <li><a routerLink="/user/transactions">Transaction History</a></li>
+    </ul>
+  </div>
+
+  <div class="nav-right">
+    <div class="user-avatar" (click)="toggleDropdown()">
+      <img src="https://img.freepik.com/premium-photo/anime-male-avatar_950633-956.jpg" alt="User Avatar" />
+      <ul class="dropdown" [class.show]="dropdownOpen">
+        <li><a routerLink="/user/wallet">Wallet</a></li>
+        <li><a routerLink="/user/transactions">Transactions</a></li>
+        <li><a routerLink="/user/profile">Profile</a></li>
+        <li><a (click)="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

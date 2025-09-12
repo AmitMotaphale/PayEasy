@@ -11,7 +11,6 @@ export interface MerchantLoginResponse {
   message: string;
 }
 
-
 @Component({
   selector: 'app-merchant-login',
   templateUrl: './login.html',
