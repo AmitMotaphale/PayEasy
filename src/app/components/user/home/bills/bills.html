@@ -1,1 +1,52 @@
-<p>User bills works Correctly</p>
+<div class="bills-container">
+    <h2>Pay Your Bills</h2>
+
+    <!-- Create New Bill -->
+    <form (ngSubmit)="addBill()" class="bill-form">
+        <label>Bill Type:</label>
+        <select [(ngModel)]="newBill.billType" name="billType" required>
+            <option value="" disabled>Select Bill Type</option>
+            <option value="ELECTRICITY">Electricity</option>
+            <option value="GAS">Gas</option>
+            <option value="PHONE">Phone</option>
+            <option value="DTH">DTH</option>
+        </select>
+
+        <label>Customer ID:</label>
+        <input [(ngModel)]="newBill.customerId" name="customerId" required />
+
+        <label>Amount:</label>
+        <input type="number" [(ngModel)]="newBill.amount" name="amount" required />
+
+        <button type="submit">Add Bill</button>
+    </form>
+
+    <hr />
+
+    <!-- List Bills -->
+    <h3>Your Bills</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Bill Type</th>
+                <th>Customer ID</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let bill of bills">
+                <td>{{ bill.billType }}</td>
+                <td>{{ bill.customerId }}</td>
+                <td>{{ bill.amount }}</td>
+                <td>{{ bill.status }}</td>
+                <td>
+                    <button class="pay-btn" (click)="payBill(bill.billId!)" [disabled]="bill.status === 'SUBMITTED'">
+                        Pay
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
