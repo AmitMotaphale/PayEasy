@@ -1,4 +1,4 @@
-package com.payeasy.bankaccount.entity;
+package com.payeasy.merchbankaccount.entity;
 
 import java.sql.Timestamp;
 
@@ -9,17 +9,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "BANK_ACCOUNTS")
+@Table(name = "BANK_ACCOUNTS_MERCH")
 public class BankAccount {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long bankId;
-	
-	private Long userId;
+	private Long merchId;
 	private String bankName;
 	private String accountNumber;
 	private String ifscCode;
-	private String upiId;
 	private Boolean isPrimary;
 	private Timestamp createdAt;
 	public Long getBankId() {
@@ -28,11 +26,11 @@ public class BankAccount {
 	public void setBankId(Long bankId) {
 		this.bankId = bankId;
 	}
-	public Long getUserId() {
-		return userId;
+	public Long getMerchId() {
+		return merchId;
 	}
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setMerchId(Long merchId) {
+		this.merchId = merchId;
 	}
 	public String getBankName() {
 		return bankName;
@@ -51,12 +49,6 @@ public class BankAccount {
 	}
 	public void setIfscCode(String ifscCode) {
 		this.ifscCode = ifscCode;
-	}
-	public String getUpiId() {
-		return upiId;
-	}
-	public void setUpiId(String upiId) {
-		this.upiId = upiId;
 	}
 	public Boolean getIsPrimary() {
 		return isPrimary;

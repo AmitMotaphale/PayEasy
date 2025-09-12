@@ -1,5 +1,6 @@
 package com.payeasy.user.controller;
 
+import com.payeasy.user.dto.UserLoginResponse;
 import com.payeasy.user.entity.User;
 import com.payeasy.user.kafka.UserEmailProducer;
 import com.payeasy.user.service.UserService;
@@ -44,7 +45,16 @@ public class LoginController {
             // Send email to Kafka topic
         	User user = userOpt.get();
             producer.sendEmailToKafka(user.getEmail());
-            return ResponseEntity.ok("Login successful. OTP sent via notification service.");
+            
+            UserLoginResponse response = new UserLoginResponse(
+                    user.getUserId(),
+                    user.getFullName(),
+                    user.getEmail(),
+                    user.getMobile(),
+                    "Login successful. OTP sent via notification service."
+                );
+            
+            return ResponseEntity.ok(response);
         } else {
             return ResponseEntity.status(401).body("Invalid credentials");
         }

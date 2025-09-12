@@ -32,7 +32,16 @@ public class Merchant {
 	@NotBlank(message = "Email is required")
 	@Email(message = "Email should be valid")
 	private String email;
+	@NotBlank(message = "Password is Required")
+	private String password;
 	private Timestamp createdAt;
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public Long getMerchantId() {
 		return merchantId;
 	}

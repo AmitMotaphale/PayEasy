@@ -1,4 +1,4 @@
-package com.payeasy.bankaccount.service;
+package com.payeasy.merchbankaccount.service;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -7,8 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.payeasy.bankaccount.entity.BankAccount;
-import com.payeasy.bankaccount.repository.BankAccountRepository;
+import com.payeasy.merchbankaccount.entity.BankAccount;
+import com.payeasy.merchbankaccount.repository.BankAccountRepository;
 
 @Service
 public class BankAccountService {
@@ -21,8 +21,8 @@ public class BankAccountService {
         return bankAccountRepository.save(bankAccount);
     }
 
-    public List<BankAccount> getBankAccountsByUser(Long userId) {
-        return bankAccountRepository.findByUserId(userId);
+    public List<BankAccount> getBankAccountsByUser(Long merchId) {
+        return bankAccountRepository.findByMerchId(merchId);
     }
 
     public Optional<BankAccount> getBankAccountById(Long bankId) {
@@ -36,7 +36,6 @@ public class BankAccountService {
             bankAccount.setBankName(bankAccountDetails.getBankName());
             bankAccount.setAccountNumber(bankAccountDetails.getAccountNumber());
             bankAccount.setIfscCode(bankAccountDetails.getIfscCode());
-            bankAccount.setUpiId(bankAccountDetails.getUpiId());
             bankAccount.setIsPrimary(bankAccountDetails.getIsPrimary());
             return bankAccountRepository.save(bankAccount);
         }
@@ -52,8 +51,8 @@ public class BankAccountService {
         return false;
     }
 
-    public boolean setPrimaryAccount(Long userId, Long bankId) {
-        List<BankAccount> accounts = bankAccountRepository.findByUserId(userId);
+    public boolean setPrimaryAccount(Long merchId, Long bankId) {
+        List<BankAccount> accounts = bankAccountRepository.findByMerchId(merchId);
         if (accounts.isEmpty()) {
             return false;  // No accounts for user
         }

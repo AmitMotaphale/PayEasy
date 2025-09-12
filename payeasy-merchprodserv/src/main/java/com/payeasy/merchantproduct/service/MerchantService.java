@@ -15,6 +15,24 @@ public class MerchantService {
 	@Autowired
     private MerchantRepository merchantRepository;
 
+	 public Merchant registerMerchant(Merchant merchant) {
+	        merchant.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+	        //will add the hashUtils here in Future
+	        return merchantRepository.save(merchant);
+	    }
+	 
+	 public Optional<Merchant> loginMerchant(String email, String password) {
+	        Optional<Merchant> optMerchant = merchantRepository.findByEmail(email);
+	        if (optMerchant.isPresent()) {
+	            Merchant merchant = optMerchant.get();
+	            // Hash Utils to be inserted here in future
+	            if (merchant.getPassword().equals(password)) {
+	                return Optional.of(merchant);
+	            }
+	        }
+	        return Optional.empty();
+	    }
+	
     public Merchant addMerchant(Merchant merchant) {
         merchant.setCreatedAt(new Timestamp(System.currentTimeMillis()));
         return merchantRepository.save(merchant);
