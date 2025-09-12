@@ -7,6 +7,7 @@ import { TransactionsComponent } from './transactions/transactions';
 import { ProductsComponent } from './products/products';
 import { SettingsComponent } from './settings/settings';
 import { TopNavbarComponent } from '../../shared/top-navbar/top-navbar';
+import { FooterComponent } from '../../shared/footer/footer';
 
 
 @Component({
@@ -23,6 +24,7 @@ import { TopNavbarComponent } from '../../shared/top-navbar/top-navbar';
     TransactionsComponent,
     ProductsComponent,
     SettingsComponent,
+    FooterComponent,
   ],
 })
 export class DashboardComponent  {
