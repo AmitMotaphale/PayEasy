@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './landing.css'
 })
 export class Landing {
+  showCookiePopup = true;
 
+  closeCookiePopup() {
+    this.showCookiePopup = false;
+  }
 }
