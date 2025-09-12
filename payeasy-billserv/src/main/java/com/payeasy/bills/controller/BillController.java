@@ -15,8 +15,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/bills")
 public class BillController {
-@Autowired
-private BillService billService;
+
+	@Autowired
+	private BillService billService;
 
 	@PostMapping
 	public ResponseEntity<Bill> createBill(@RequestBody Bill bill){
@@ -26,25 +27,18 @@ private BillService billService;
 	
 	@GetMapping("/user/{userId}")
     public ResponseEntity<List<Bill>> getUserBills(@PathVariable Long userId) {
-        List<Bill> bills = billService.getBillsByUser(userId);
-        return ResponseEntity.ok(bills);
+        return ResponseEntity.ok(billService.getBillsByUser(userId));
     }
 
-    @GetMapping("/user/{userId}/status/{status}")
-    public ResponseEntity<List<Bill>> getUserBillsByStatus(@PathVariable Long userId, @PathVariable String status) {
-        List<Bill> bills = billService.getBillsbyUserAndStatus(userId, status);
-        return ResponseEntity.ok(bills);
-    }
+	 @GetMapping("/user/{userId}/status/{status}")
+	    public ResponseEntity<List<Bill>> getUserBillsByStatus(@PathVariable Long userId, @PathVariable String status) {
+	        return ResponseEntity.ok(billService.getBillsbyUserAndStatus(userId, status));
+	    }
     
-    //() -> ResponseEntity.badRequest().body("Bill not found")
-    @PutMapping("/{billId}/pay")
-    public ResponseEntity<?> payBill(@PathVariable Long billId) {
-        Optional<Bill> billOpt = billService.payBill(billId);
-        if (billOpt.isPresent()) {
-            return ResponseEntity.ok(billOpt.get());
-        } else {
-            return ResponseEntity.badRequest().body("Bill not found");
-        }
-    }
-
-}
+	 @PutMapping("/{billId}/pay")
+	    public ResponseEntity<?> payBill(@PathVariable Long billId) {
+	        Optional<Bill> billOpt = billService.payBill(billId);
+	        return billOpt.<ResponseEntity<?>>map(ResponseEntity::ok)
+	                .orElseGet(() -> ResponseEntity.badRequest().body("Bill not found"));
+	    }
+	}

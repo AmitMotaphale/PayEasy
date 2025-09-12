@@ -17,7 +17,7 @@ public class BillService {
 	
 	
 	public Bill addBill(Bill bill) {
-		bill.setCreateAt(new Timestamp(System.currentTimeMillis()));
+		bill.setCreatedAt(new Timestamp(System.currentTimeMillis()));
 		bill.setStatus("PENDING");
 		return billRepository.save(bill);
 	}
@@ -29,14 +29,14 @@ public class BillService {
 		return billRepository.findByUserIdAndStatus(userId , status);
 	}
 	
-	public Optional<Bill> payBill(long BillId){
-		Optional<Bill> billOpt = billRepository.findById(BillId);
-		if (billOpt.isPresent()) {
+	public Optional<Bill> payBill(long billId) {
+        Optional<Bill> billOpt = billRepository.findById(billId);
+        if (billOpt.isPresent()) {
             Bill bill = billOpt.get();
-            bill.setStatus("PAID");
+            bill.setStatus("SUBMITTED");
             billRepository.save(bill);
-           return Optional.of(bill);
-	}
-		return Optional.empty();
-	}
+            return Optional.of(bill);
+        }
+        return Optional.empty();
+    }
 }
