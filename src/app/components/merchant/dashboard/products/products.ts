@@ -19,6 +19,7 @@ products: Product[] = [];
     productName: '',
     description: '',
     price: 0,
+    quantity: 1 
   };
 
   editProductId: number | null = null;
@@ -45,8 +46,8 @@ products: Product[] = [];
   }
 
   addProduct() {
-    if (!this.newProduct.productName.trim() || this.newProduct.price <= 0) {
-      alert('Please enter valid product name and price.');
+    if (!this.newProduct.productName.trim() || this.newProduct.price <= 0 || this.newProduct.quantity < 1) {
+      alert('Please enter valid product name, price, and quantity.');
       return;
     }
 
@@ -58,6 +59,7 @@ products: Product[] = [];
       error: (err) => console.error('Failed to add product', err),
     });
   }
+
 
   startEdit(product: Product) {
     this.editProductId = product.productId!;
@@ -106,6 +108,7 @@ products: Product[] = [];
       productName: '',
       description: '',
       price: 0,
+      quantity: 1 
     };
   }
 }

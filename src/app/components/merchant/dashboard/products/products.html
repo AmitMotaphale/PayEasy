@@ -43,6 +43,24 @@
       </div>
     </div>
 
+    <div class="form-group">
+      <label>Quantity</label>
+      <input
+        type="number"
+        [(ngModel)]="newProduct.quantity"
+        name="quantity"
+        required
+        min="1"
+        step="1"
+        placeholder="Enter quantity"
+        #quantityInput="ngModel"
+      />
+      <div class="error-message" *ngIf="quantityInput.invalid && (quantityInput.dirty || quantityInput.touched)">
+        <span *ngIf="quantityInput.errors?.['required']">Quantity is required.</span>
+        <span *ngIf="quantityInput.errors?.['min']">Minimum quantity is 1.</span>
+      </div>
+    </div>
+
     <div class="form-actions">
       <button type="submit" [disabled]="productForm.invalid">
         {{ editProductId ? '💾 Save Changes' : '➕ Add Product' }}
@@ -61,6 +79,7 @@
           <th>Product Name</th>
           <th>Description</th>
           <th>Price (₹)</th>
+          <th>Quantity</th>
           <th>Manage</th>
         </tr>
       </thead>
@@ -69,6 +88,7 @@
           <td>{{ product.productName }}</td>
           <td>{{ product.description }}</td>
           <td>{{ product.price | number: '1.2-2' }}</td>
+          <td>{{ product.quantity }}</td>
           <td>
             <button class="btn-edit" (click)="startEdit(product)">✏️ Edit</button>
             <button class="btn-delete" (click)="deleteProduct(product.productId!)">🗑️ Remove</button>
