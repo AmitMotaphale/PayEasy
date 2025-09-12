@@ -66,9 +66,13 @@
         <span *ngIf="!account.editMode">{{ account.ifscCode }}</span>
         <input *ngIf="account.editMode" [(ngModel)]="account.ifscCode" />
       </td>
-      <td>
-        <button *ngIf="!account.editMode" (click)="account.editMode = true">Edit</button>
-        <button *ngIf="account.editMode" (click)="saveBankAccount(account)">Save</button>
+      <td class="action-buttons">
+        <ng-container *ngIf="!account.editMode; else editModeButtons">
+          <button (click)="account.editMode = true">Edit</button>
+        </ng-container>
+        <ng-template #editModeButtons>
+          <button (click)="saveBankAccount(account)">Save</button>
+        </ng-template>
         <button (click)="deleteBankAccount(account.bankId!)">Delete</button>
       </td>
       <td>

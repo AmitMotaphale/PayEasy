@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './merch-navbar.css'
 })
 export class MerchNavbar {
-  isCollapsed = false;
+  isCollapsed = true;
   activeMenu = 'report';
 
   @Output() menuChange = new EventEmitter<string>();
@@ -27,9 +27,11 @@ export class MerchNavbar {
   }
 
   logout() {
-    // Clear all stored user data on logout
-    localStorage.clear();
-    // Navigate to merchant login page
-    this.router.navigate(['/merchant/login']).catch(err => console.error('Navigation error:', err));
+    const confirmed = window.confirm('Are you sure you want to logout?');
+
+    if (confirmed) {
+      localStorage.clear();
+      this.router.navigate(['/merchant/login']).catch(err => console.error('Navigation error:', err));
+    }
   }
 }
