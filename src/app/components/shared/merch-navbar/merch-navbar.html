@@ -7,26 +7,32 @@
     <li (click)="selectMenu('reports')" [class.active]="activeMenu === 'report'">
       <span class="icon">📊</span>
       <span class="label" *ngIf="!isCollapsed">Reports</span>
+      <span class="tooltip" *ngIf="isCollapsed">Reports</span>
     </li>
     <li (click)="selectMenu('bank')" [class.active]="activeMenu === 'bank'">
       <span class="icon">🏦</span>
       <span class="label" *ngIf="!isCollapsed">Bank Account</span>
+      <span class="tooltip" *ngIf="isCollapsed">Bank Account</span>
     </li>
     <li (click)="selectMenu('transactions')" [class.active]="activeMenu === 'transactions'">
       <span class="icon">💳</span>
       <span class="label" *ngIf="!isCollapsed">Transactions</span>
+      <span class="tooltip" *ngIf="isCollapsed">Transactions</span>
     </li>
     <li (click)="selectMenu('products')" [class.active]="activeMenu === 'products'">
       <span class="icon">📦</span>
       <span class="label" *ngIf="!isCollapsed">Products</span>
+      <span class="tooltip" *ngIf="isCollapsed">Products</span>
     </li>
     <li (click)="selectMenu('settings')" [class.active]="activeMenu === 'settings'">
       <span class="icon">⚙️</span>
       <span class="label" *ngIf="!isCollapsed">Settings</span>
+      <span class="tooltip" *ngIf="isCollapsed">Settings</span>
     </li>
     <li (click)="logout()" class="logout-btn">
       <span class="icon">🚪</span>
       <span class="label" *ngIf="!isCollapsed">Logout</span>
+      <span class="tooltip" *ngIf="isCollapsed">Logout</span>
     </li>
   </ul>
 

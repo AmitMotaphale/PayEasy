@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './merch-navbar.css'
 })
 export class MerchNavbar {
-  isCollapsed = true;
+  isCollapsed = false;
   activeMenu = 'report';
 
   @Output() menuChange = new EventEmitter<string>();
