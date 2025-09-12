@@ -24,7 +24,10 @@ const routes: Routes = [
   // User authentication routes
   { path: 'user/login', component: UserLoginComponent },
   { path: 'user/signup', component: UserSignupComponent },
-  { path: 'otp-verify', component: OtpVerify },
+  { path: 'otp-verify', 
+    component: OtpVerify,
+    canActivate: [UserAuthGuard] 
+  },
 
   // Merchant authentication routes
   { path: 'merchant/login', component: MerchantLoginComponent },

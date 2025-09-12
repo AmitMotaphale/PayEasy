@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class UserNavbar {
   dropdownOpen = false;
 
+@Output() menuChange = new EventEmitter<string>(); 
+
   constructor(private router: Router) {}
 
   toggleDropdown() {
@@ -19,5 +21,9 @@ export class UserNavbar {
   logout() {
     localStorage.clear();
     this.router.navigateByUrl('/user/login');
+  }
+  // Call this on link click
+  selectMenu(menu: string) {
+    this.menuChange.emit(menu);
   }
 }

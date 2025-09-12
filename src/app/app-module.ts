@@ -19,6 +19,10 @@ import { BankAccountComponent } from './components/merchant/dashboard/bank-accou
 import { TopNavbarComponent } from './components/shared/top-navbar/top-navbar';
 import { OtpVerify } from './components/user/otp-verify/otp-verify';
 import { UserNavbar } from './components/shared/user-navbar/user-navbar';
+import { BillsComponent } from './components/user/home/bills/bills';
+import { EcommerceComponents } from './components/user/home/ecommerce/ecommerce';
+import { UserTransactionsComponent } from './components/user/home/user-transactions/user-transactions';
+import { UserbankAccountComponent } from './components/user/home/userbank-account/userbank-account';
 
 
 @NgModule({
@@ -41,15 +45,25 @@ import { UserNavbar } from './components/shared/user-navbar/user-navbar';
     OtpVerify,
     MerchantLoginComponent,
     MerchantSignupComponent,
+
+    //Nav Bar
     MerchNavbar,
     TopNavbarComponent,
     UserNavbar,
+
+    //Merchant ke Components
     UserLoginComponent,
     ReportsComponent,
     TransactionsComponent,
     BankAccountComponent,
     ProductsComponent,
-    SettingsComponent
+    SettingsComponent,
+
+    //User ke Components
+    BillsComponent,
+    EcommerceComponents,
+    UserTransactionsComponent,
+    UserbankAccountComponent
   ],
   providers: [],
   bootstrap: [App]
