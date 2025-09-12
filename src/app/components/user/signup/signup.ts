@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Auth } from '../../../services/auth';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-user-signup',
   templateUrl: './signup.html',
   styleUrl: './signup.css', // use your signup.css path
   standalone: true,
-  imports: [FormsModule, CommonModule]
+  imports: [FormsModule, CommonModule, RouterModule]
 })
 export class UserSignupComponent {
   fullName = '';
@@ -18,7 +19,7 @@ export class UserSignupComponent {
   passwordHash = '';
   error = '';
 
-  constructor(private router: Router, private auth: Auth) {}
+  constructor(private router: Router, private auth: Auth) { }
 
   signup() {
     const userData = {
