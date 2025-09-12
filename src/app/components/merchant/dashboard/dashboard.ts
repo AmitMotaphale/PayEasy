@@ -7,7 +7,7 @@ import { TransactionsComponent } from './transactions/transactions';
 import { ProductsComponent } from './products/products';
 import { SettingsComponent } from './settings/settings';
 import { TopNavbarComponent } from '../../shared/top-navbar/top-navbar';
-import { Footer } from '../../shared/footer/footer';
+import { FooterComponent } from '../../shared/footer/footer';
 
 
 @Component({
@@ -24,7 +24,7 @@ import { Footer } from '../../shared/footer/footer';
     TransactionsComponent,
     ProductsComponent,
     SettingsComponent,
-    Footer,
+    FooterComponent,
   ],
 })
 export class DashboardComponent  {

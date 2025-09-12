@@ -24,7 +24,7 @@ import { ProductEcommerceComponents } from './components/user/home/ecommerce/eco
 import { UserTransactionsComponent } from './components/user/home/user-transactions/user-transactions';
 import { UserbankAccountComponent } from './components/user/home/userbank-account/userbank-account';
 import { UserhomeComponent } from './components/user/home/userhome/userhome';
-import { Footer } from './components/shared/footer/footer';
+import { FooterComponent } from './components/shared/footer/footer';
 
 
 @NgModule({
@@ -38,7 +38,7 @@ import { Footer } from './components/shared/footer/footer';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    Footer,
+    FooterComponent,
     
     //standalone components are here 
     DashboardComponent,
