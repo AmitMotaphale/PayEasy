@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   template: `
   <div class="otp-container">
-    <img src="assets/logo.png" alt="Logo" class="otp-logo" />
+    <img src="Logo-text.png" alt="Logo" class="otp-logo" />
     <h3>Enter OTP sent to your email</h3>
     <div *ngIf="otpError" class="alert alert-danger">{{ otpError }}</div>
     <input [(ngModel)]="otp" name="otp" maxlength="6" minlength="6" required placeholder="6-digit OTP" class="form-control otp-input" />
