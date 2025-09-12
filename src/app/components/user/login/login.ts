@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Auth } from '../../../services/auth';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 export interface UserLoginResponse {
   userId: number;
@@ -17,7 +18,7 @@ export interface UserLoginResponse {
   templateUrl: './login.html',
   styleUrls: ['./login.css'], // use your login.css path
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterModule],
 })
 export class UserLoginComponent {
   email = '';
@@ -27,7 +28,7 @@ export class UserLoginComponent {
   otp = '';
   otpError = '';
 
-  constructor(private router: Router, private auth: Auth) {}
+  constructor(private router: Router, private auth: Auth) { }
 
   login(event?: Event) {
     if (event) event.preventDefault();
@@ -37,14 +38,14 @@ export class UserLoginComponent {
 
     this.auth.loginUser(this.email, this.password).subscribe({
       next: (res: UserLoginResponse) => {
-       if (res.userId !== undefined && res.fullName && res.email && res.mobile) {
-         localStorage.setItem('userId', res.userId.toString()); 
-         localStorage.setItem('fullName', res.fullName); 
-         localStorage.setItem('email', res.email); 
-         localStorage.setItem('mobile', res.mobile.toString()); 
-        } 
-        else { 
-          console.error('Invalid user data received:', res); 
+        if (res.userId !== undefined && res.fullName && res.email && res.mobile) {
+          localStorage.setItem('userId', res.userId.toString());
+          localStorage.setItem('fullName', res.fullName);
+          localStorage.setItem('email', res.email);
+          localStorage.setItem('mobile', res.mobile.toString());
+        }
+        else {
+          console.error('Invalid user data received:', res);
         }
         this.router.navigate(['/otp-verify'], { state: { email: this.email } })
           .catch(err => console.error('Navigation error:', err));

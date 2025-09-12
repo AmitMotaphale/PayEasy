@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Auth } from '../../../services/auth';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-merchant-signup',
   templateUrl: './signup.html',
   styleUrl: './signup.css',
   standalone: true,
-  imports: [FormsModule, CommonModule]
+  imports: [FormsModule, CommonModule, RouterModule]
 })
 export class MerchantSignupComponent {
   merchantName = '';
@@ -18,7 +19,7 @@ export class MerchantSignupComponent {
   password = '';
   error = '';
 
-  constructor(private router: Router, private auth: Auth) {}
+  constructor(private router: Router, private auth: Auth) { }
 
   signup() {
     const merchantData = {

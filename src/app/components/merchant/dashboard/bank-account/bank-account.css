@@ -5,10 +5,22 @@
   background: #fff;
   border-radius: 6px;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  overflow-x: auto;
 }
 
 h2 {
   margin-bottom: 1rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Optional: Prevent buttons from stacking weirdly on narrow screens */
+.action-buttons button {
+  flex: 1 1 auto;
 }
 
 .bank-form {
@@ -56,6 +68,8 @@ button:disabled {
 .bank-accounts-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed; /* Force all columns to respect width */
+  overflow-x: auto;
 }
 
 .bank-accounts-table th,
@@ -71,4 +85,10 @@ button:disabled {
 
 button:hover:not(:disabled) {
   background-color: #1f6391;
+}
+.bank-accounts-table td input {
+  width: 100%; /* Force input fields to fit inside table cells */
+  box-sizing: border-box;
+  padding: 0.4rem;
+  font-size: 1rem;
 }
