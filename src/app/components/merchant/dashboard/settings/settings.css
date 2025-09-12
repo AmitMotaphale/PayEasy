@@ -105,3 +105,22 @@
   font-size: 0.95rem;
   text-align: center;
 }
+
+/* Back button */
+.back-btn {
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 8px 16px;
+  background: #edf2f7;
+  color: #2b6cb0;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #e2e8f0;
+}

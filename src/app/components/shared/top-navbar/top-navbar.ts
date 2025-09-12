@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener } from '@angular/core';
 import {FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-navbar',
@@ -12,7 +13,7 @@ import {FormsModule } from '@angular/forms';
 export class TopNavbarComponent {
   dropdownOpen = false;
 
-  constructor(private eRef: ElementRef) {}
+  constructor(private eRef: ElementRef, private router: Router) {}
 
 
   toggleDropdown() {
@@ -20,13 +21,14 @@ export class TopNavbarComponent {
   }
 
   editProfile() {
-    console.log('Edit profile clicked');
-    // navigate to profile page
+    this.router.navigate(['/merchant/dashboard/settings'], {
+      state: { fromTopNavbar: true }
+    });
   }
 
   logout() {
-    console.log('Logout clicked');
-    // handle logout logic
+    localStorage.clear();
+    window.location.href="/merchant/login";
   }
  @HostListener('document:click', ['$event'])
   clickOutside(event: Event) {

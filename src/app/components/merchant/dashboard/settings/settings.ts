@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Merchant, MerchantService } from '../../../../services/merchant'
+import { Merchant, MerchantService } from '../../../../services/merchant';
+import { Router } from '@angular/router'; // ✅ Correct Angular Router
 
 @Component({
   selector: 'app-settings',
@@ -20,10 +21,20 @@ export class SettingsComponent {
   merchantId!: number;
   deletedMessage = '';
   showThankYouMessage = false;
+  showBackButton = false; // ✅ Show if navigated from TopNavbar
 
-  constructor(private merchantService: MerchantService) {}
+  constructor(
+    private merchantService: MerchantService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
+    // ✅ Check if navigated from TopNavbar
+    const navState = history.state;
+    if (navState && navState.fromTopNavbar) {
+      this.showBackButton = true;
+    }
+
     const merchIdStr = localStorage.getItem('merchantId');
     if (merchIdStr) {
       this.merchantId = Number(merchIdStr);
@@ -41,12 +52,12 @@ export class SettingsComponent {
     });
   }
 
- updateProfile() {
+  updateProfile() {
     if (!this.validateInputs()) return;
 
     const updatedMerchant: Merchant = { ...this.merchant };
 
-    // Only send password if it's filled in
+    // ✅ Only include password if filled
     if (!updatedMerchant.password?.trim()) {
       delete updatedMerchant.password;
     }
@@ -82,10 +93,9 @@ export class SettingsComponent {
         next: () => {
           this.showThankYouMessage = true;
           setTimeout(() => {
-            // Logout and redirect after showing message
             localStorage.clear();
             window.location.href = '/merchant/login';
-          }, 7000); // 7 seconds message display
+          }, 7000);
         },
         error: (err) => {
           console.error('Failed to delete account', err);
@@ -93,5 +103,10 @@ export class SettingsComponent {
         },
       });
     }
+  }
+
+  // ✅ Navigate back to dashboard if "Back" button is shown
+  goBackToDashboard() {
+    this.router.navigate(['/merchant/dashboard']);
   }
 }
