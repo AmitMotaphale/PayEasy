@@ -41,12 +41,18 @@ export class SettingsComponent {
     });
   }
 
-  updateProfile() {
+ updateProfile() {
     if (!this.validateInputs()) return;
-    this.merchantService.updateMerchant(this.merchantId, this.merchant).subscribe({
-      next: (res) => {
-        alert('Profile updated successfully.');
-      },
+
+    const updatedMerchant: Merchant = { ...this.merchant };
+
+    // Only send password if it's filled in
+    if (!updatedMerchant.password?.trim()) {
+      delete updatedMerchant.password;
+    }
+
+    this.merchantService.updateMerchant(this.merchantId, updatedMerchant).subscribe({
+      next: () => alert('Profile updated successfully.'),
       error: (err) => {
         console.error('Failed to update profile', err);
         alert('Profile update failed.');
