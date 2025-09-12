@@ -29,9 +29,16 @@ public class Product {
 	@NotNull(message = "Price is required")
 	@DecimalMin(value = "0.0", inclusive = false, message = "Price must be greater than zero")
     private Double price;
+	private int quantity;
     private Timestamp createdAt;
 	public Long getProductId() {
 		return productId;
+	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	public void setProductId(Long productId) {
 		this.productId = productId;
