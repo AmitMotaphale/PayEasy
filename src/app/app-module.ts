@@ -25,7 +25,7 @@ import { UserTransactionsComponent } from './components/user/home/user-transacti
 import { UserbankAccountComponent } from './components/user/home/userbank-account/userbank-account';
 import { UserhomeComponent } from './components/user/home/userhome/userhome';
 import { FooterComponent } from './components/shared/footer/footer';
-import { UserWalletComponent } from './components/user/home/wallet/wallet';
+import { WalletComponent } from './components/user/home/wallet/wallet';
 
 
 @NgModule({
@@ -69,7 +69,7 @@ import { UserWalletComponent } from './components/user/home/wallet/wallet';
     UserTransactionsComponent, //transction unique ke liya
     UserhomeComponent,
     UserbankAccountComponent,
-    UserWalletComponent
+    WalletComponent
   ],
   providers: [],
   bootstrap: [App]

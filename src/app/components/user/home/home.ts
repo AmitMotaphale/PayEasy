@@ -6,7 +6,7 @@ import { UserTransactionsComponent } from './user-transactions/user-transactions
 import { UserbankAccountComponent } from './userbank-account/userbank-account';
 import { CommonModule } from '@angular/common';
 import { UserhomeComponent } from './userhome/userhome';
-import { UserWalletComponent } from './wallet/wallet';
+import { WalletComponent } from './wallet/wallet';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +18,7 @@ import { UserWalletComponent } from './wallet/wallet';
     UserTransactionsComponent,
     UserbankAccountComponent,
     UserhomeComponent,
-    UserWalletComponent
+    WalletComponent
 ],
   templateUrl: './home.html',
   styleUrl: './home.css'
