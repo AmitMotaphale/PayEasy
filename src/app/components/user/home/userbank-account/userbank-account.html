@@ -66,7 +66,7 @@
         <span *ngIf="!account.editMode">{{ account.ifscCode }}</span>
         <input *ngIf="account.editMode" [(ngModel)]="account.ifscCode" />
       </td>
-    <td class="action-buttons">
+    <td class="actions">
         <ng-container *ngIf="!account.editMode; else editModeButtons">
           <button (click)="account.editMode = true">Edit</button>
              </ng-container>
