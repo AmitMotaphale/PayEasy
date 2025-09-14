@@ -25,6 +25,7 @@ import { UserTransactionsComponent } from './components/user/home/user-transacti
 import { UserbankAccountComponent } from './components/user/home/userbank-account/userbank-account';
 import { UserhomeComponent } from './components/user/home/userhome/userhome';
 import { FooterComponent } from './components/shared/footer/footer';
+import { UserWalletComponent } from './components/user/home/wallet/wallet';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { FooterComponent } from './components/shared/footer/footer';
     ProductEcommerceComponents, //unique ke liya Ecommerce add kiya 
     UserTransactionsComponent, //transction unique ke liya
     UserhomeComponent,
-    UserbankAccountComponent
+    UserbankAccountComponent,
+    UserWalletComponent
   ],
   providers: [],
   bootstrap: [App]

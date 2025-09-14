@@ -1,1 +1,88 @@
-<p>userhome works!</p>
+<div class="home-container">
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="hero-content">
+      <h1>Welcome to PayEasy</h1>
+      <p>Your all-in-one payment solution. Fast. Secure. Simple.</p>
+      <div class="hero-actions">
+        <button class="action-button" (click)="openSendMoneyDialog()">Send Money</button>
+        <!-- <button class="action-button">Receive Money</button> -->
+        <button class="action-button" (click)="goToPayBills()">Pay Bills</button>
+      </div>
+    </div>
+    <img
+    src="https://www.pngall.com/wp-content/uploads/15/Payment-PNG-Images-HD.png"
+    alt="Payments"
+    class="hero-image"
+    />
+  </section>
+  <!-- Offers Section -->
+  <section class="offers-section">
+    <h2>Exclusive Offers</h2>
+    <div class="offers-grid">
+      <div class="offer-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Cashback Offer" />
+        <p>Get 10% cashback on electricity bills!</p>
+      </div>
+      <div class="offer-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/2666/2666488.png" alt="Rewards Offer" />
+        <p>Win rewards for every money transfer.</p>
+      </div>
+      <div class="offer-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/11340/11340069.png " alt="Refer & Earn" />
+        <p>Refer & earn up to ₹500 per friend!</p>
+      </div>
+    </div>
+  </section>
+  <!-- Features Section -->
+  <section class="features-section">
+    <h2>Why Choose PayEasy?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <img src="https://cdn4.iconfinder.com/data/icons/eshop/403/39-1024.png" alt="Secure Transactions" />
+        <h3>Secure Transactions</h3>
+        <p>End-to-end encrypted transactions with real-time alerts.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/8205/8205413.png" alt="Cashbacks & Rewards" />
+        <h3>Cashbacks & Rewards</h3>
+        <p>Earn cashback and exciting rewards every time you pay.</p>
+      </div>
+      <div class="feature-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/8781/8781830.png" alt="24/7 Support" />
+        <h3>24/7 Support</h3>
+        <p>Our support team is here for you — anytime, anywhere.</p>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="modal-backdrop" *ngIf="showSendMoneyDialog">
+  <div class="modal">
+    <button class="close-btn" (click)="closeSendMoneyDialog()">×</button>
+    <h2>Send Money</h2>
+    <form (ngSubmit)="sendMoney()" #sendForm="ngForm">
+      <label for="beneficiaryName">Beneficiary Name</label>
+      <input type="text" id="beneficiaryName" name="beneficiaryName" [(ngModel)]="sendFormData.name" required />
+      <label for="accountNumber">Account Number</label>
+      <input type="text" id="accountNumber" name="accountNumber" [(ngModel)]="sendFormData.accountNumber" required />
+      <label for="ifsc">IFSC Code</label>
+      <input type="text" id="ifsc" name="ifsc" [(ngModel)]="sendFormData.ifsc" required />
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" name="amount" [(ngModel)]="sendFormData.amount" required />
+      <label for="selectAccount">Select From Account</label>
+      <select id="selectAccount" name="selectAccount" [(ngModel)]="sendFormData.fromAccount" required>
+        <option *ngFor="let account of bankAccounts" [value]="account">
+          {{ account }}
+        </option>
+      </select>
+      <button type="submit" class="send-btn">Send</button>
+    </form>
+  </div>
+</div>
+<!-- Success Dialog -->
+<div class="success-dialog-backdrop" *ngIf="showSuccessDialog" (click)="closeSuccessDialog()">
+  <div class="success-dialog">
+    <div class="checkmark">:heavy_check_mark:</div>
+    <p>Amount sent successfully!</p>
+  </div>
+</div>

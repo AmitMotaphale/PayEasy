@@ -17,6 +17,7 @@ import { MerchantAuthGuard } from './guards/merchant-auth-guard';
 import { Home } from './components/user/home/home';
 import { UserAuthGuard } from './guards/user-auth-guard';
 import { SettingsComponent } from './components/merchant/dashboard/settings/settings';
+import { UserBillsComponent } from './components/user/home/bills/bills';
 
 const routes: Routes = [
   // Landing page
@@ -57,6 +58,11 @@ const routes: Routes = [
     path: 'user/home',
     component: Home,
     canActivate: [UserAuthGuard]  // Apply the guard here
+  },
+  {
+    path: 'pay-bills',
+    component: UserBillsComponent,
+    canActivate: [UserAuthGuard]
   },
 
   // Catch-all redirect to landing or login

@@ -1,0 +1,220 @@
+
+.home-container {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 2rem;
+  background-color: #f9f9f9;
+}
+
+.hero-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #5a95f5, #3e8ef7);
+  padding: 3rem;
+  border-radius: 12px;
+  color: white;
+  margin-bottom: 3rem;
+}
+
+.hero-content {
+  max-width: 50%;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-actions .action-button {
+  background-color: white;
+  color: #3e8ef7;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  margin-right: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.hero-actions .action-button:hover {
+  background-color: #e0e0e0;
+}
+
+.hero-image {
+  max-width: 40%;
+  height: auto;
+}
+
+.offers-section, .features-section {
+  margin-bottom: 3rem;
+}
+
+.offers-section h2, .features-section h2 {
+  font-size: 2rem;
+  color: #082448;
+  margin-bottom: 1.5rem;
+}
+
+.offers-grid, .features-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.offer-card, .feature-card {
+  background: white;
+  border-radius: 12px;
+  /* Blue-ish border */
+  border: 2px solid #aed0fd;
+  /* Soft blue shadow */
+  box-shadow: 0 6px 15px rgba(62, 142, 247, 0.2);
+  padding: 1.5rem;
+  text-align: center;
+  flex: 1;
+  min-width: 250px;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.offer-card:hover, .feature-card:hover {
+  /* Slight lift and stronger shadow on hover */
+  box-shadow: 0 10px 25px rgba(62, 142, 247, 0.35);
+  transform: translateY(-5px);
+}
+
+/* Keep the images and headings consistent */
+.offer-card img, .feature-card img {
+  height: 80px;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  margin-bottom: 0.5rem;
+  color: #3e8ef7; /* blue heading for better theme matching */
+}
+
+/* Blur effect when dialog is open */
+.blur-background {
+  filter: blur(5px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Backdrop for modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Modal form */
+.modal {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  position: relative;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal h2 {
+  margin-bottom: 1rem;
+  color: #3e8ef7;
+}
+
+.modal label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.modal input,
+.modal select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.send-btn {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #3e8ef7;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.send-btn:hover {
+  background-color: #2f76d2;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+}
+
+/* Success Dialog */
+.success-dialog-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-dialog {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: pop 0.3s ease-out;
+}
+
+.checkmark {
+  font-size: 3rem;
+  color: #2ecc71;
+  margin-bottom: 1rem;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
