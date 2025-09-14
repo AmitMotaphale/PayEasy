@@ -1,1 +1,52 @@
-<p>user-transactions works!</p>
+<div class="transactions-container">
+  <h2>Transactions</h2>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <input
+      type="text"
+      placeholder="Search by Product, ID, or Customer..."
+      [(ngModel)]="searchText"
+      (input)="applyFilter()"
+    />
+    <select [(ngModel)]="selectedStatus" (change)="applyFilter()">
+      <option value="">All Status</option>
+      <option value="Success">Success</option>
+      <option value="Pending">Pending</option>
+      <option value="Failed">Failed</option>
+    </select>
+  </div>
+
+  <!-- Transactions Table -->
+  <table class="transactions-table" *ngIf="filteredTransactions.length > 0;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Product Name</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let txn of filteredTransactions">
+        <td>#{{ txn.transactionId }}</td>
+        <td>{{txn.productId}}</td>
+        <td>₹ {{ txn.totalAmount }}</td>
+        <td>{{ txn.createdAt | date: 'short' }}</td>
+        <td>
+          <span class="status" [ngClass]="txn.status.toLowerCase()">
+            {{ txn.status }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="transactions.length > 0 && filteredTransactions.length === 0">
+    <p>No transaction found</p>
+  </div>
+  <div *ngIf="transactions.length === 0" class="empty-message">
+    <p>No transactions yet — make your first transaction 🎉</p>
+  </div>
+</div>

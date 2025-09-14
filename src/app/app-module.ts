@@ -38,7 +38,7 @@ import { FooterComponent } from './components/shared/footer/footer';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    FooterComponent,
+    
     
     //standalone components are here 
     DashboardComponent,
@@ -52,6 +52,7 @@ import { FooterComponent } from './components/shared/footer/footer';
     MerchNavbar,
     TopNavbarComponent,
     UserNavbar,
+    FooterComponent,
     
     //Merchant ke Components
     UserLoginComponent,

@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'merchant/signup', component: MerchantSignupComponent },
 
   //Dashboard Started 
-  //removing this as I have implemented the Gaurd
+  //removing this as I have implemented the Gaurd ~KG
   // { path: 'merchant/dashboard', component: Dashboard },
   
   //Gaurd links from here :)
@@ -45,6 +45,8 @@ const routes: Routes = [
     canActivate: [MerchantAuthGuard]  // Apply the guard here
   },
 
+
+  //Added for settings in Top-Nav bar
   {
     path: 'merchant/dashboard/settings',
     component: SettingsComponent,

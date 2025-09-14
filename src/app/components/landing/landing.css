@@ -234,3 +234,85 @@ body {
     max-width: 340px;
   }
 }
+
+
+/* ===== Cookie Popup ===== */
+.cookie-popup {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 420px;
+  width: 92%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(229, 231, 235, 0.6);
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1000;
+  animation: slideUp 0.45s ease-out;
+}
+
+.cookie-popup p {
+  margin: 0;
+  flex: 1;
+}
+
+.cookie-popup a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+.cookie-popup a:hover {
+  text-decoration: underline;
+}
+
+/* Match button style with your theme */
+.btn-cookie {
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  color: #fff;
+  border: none;
+  border-radius: 0.6rem;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+.btn-cookie:hover {
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+}
+
+/* Smooth entrance */
+@keyframes slideUp {
+  from {
+    transform: translate(-50%, 120%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustment */
+@media (max-width: 480px) {
+  .cookie-popup {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+  .btn-cookie {
+    width: 100%;
+  }
+}
+

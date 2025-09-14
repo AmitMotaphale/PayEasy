@@ -78,4 +78,12 @@
   <footer class="footer">
     <p>&copy; 2025 PayEasy. All rights reserved.</p>
   </footer>
+  <!-- Cookie Consent Popup -->
+  <div class="cookie-popup" *ngIf="showCookiePopup">
+    <p>
+      We use cookies to improve your experience. By using our site, you agree to our
+      <a href="/privacy-policy" target="_blank">Privacy Policy</a>.
+    </p>
+    <button class="btn btn-cookie" (click)="closeCookiePopup()">Got it</button>
+  </div>
 </section>

@@ -1,23 +1,23 @@
 <div class="reports-container">
   <!-- Welcome Banner -->
   <div class="welcome-banner">
-    <h2>Welcome back, Merchant 👋</h2>
+    <h2>Welcome back, {{merchantName}} 👋</h2>
     <p>Here’s your business at a glance</p>
   </div>
 
   <!-- Stats Cards -->
-  <div class="stats-grid">
+ <div class="stats-grid">
     <div class="stat-card">
       <h3>Total Products</h3>
-      <p class="stat-value">120</p>
+      <p class="stat-value">{{ totalProducts }}</p>
     </div>
     <div class="stat-card">
       <h3>Total Revenue</h3>
-      <p class="stat-value">₹ 2,45,000</p>
+      <p class="stat-value">₹ {{ totalRevenue }}</p>
     </div>
     <div class="stat-card">
       <h3>Total Transactions</h3>
-      <p class="stat-value">580</p>
+      <p class="stat-value">{{ totalTransactions }}</p>
     </div>
   </div>
 
@@ -32,40 +32,7 @@
 
   <!-- Transaction History -->
   <h3 class="section-title">Recent Transactions</h3>
-  <div class="transactions-section">
-    <table class="transactions-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Product</th>
-          <th>Amount</th>
-          <th>Date</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>#T001</td>
-          <td>Product A</td>
-          <td>₹ 1,500</td>
-          <td>2025-09-10</td>
-          <td><span class="status success">Success</span></td>
-        </tr>
-        <tr>
-          <td>#T002</td>
-          <td>Product B</td>
-          <td>₹ 2,000</td>
-          <td>2025-09-11</td>
-          <td><span class="status pending">Pending</span></td>
-        </tr>
-        <tr>
-          <td>#T003</td>
-          <td>Product C</td>
-          <td>₹ 750</td>
-          <td>2025-09-12</td>
-          <td><span class="status failed">Failed</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <div class="transactions-wrapper">
+  <app-transactions></app-transactions>
+</div>
 </div>

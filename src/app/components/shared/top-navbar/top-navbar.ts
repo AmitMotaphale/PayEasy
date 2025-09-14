@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import {FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,12 @@ import { Router } from '@angular/router';
   standalone: true,
   styleUrls: ['./top-navbar.css']
 })
-export class TopNavbarComponent {
+export class TopNavbarComponent implements OnInit{
+    merchantName: string = '';
+    ngOnInit(){
+      this.merchantName = localStorage.getItem('merchantName') || 'Merchant';
+    }
+
   dropdownOpen = false;
 
   constructor(private eRef: ElementRef, private router: Router) {}

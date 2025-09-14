@@ -1,1 +1,105 @@
-<p>User ecommerce works!</p>
+
+  <div class="ecommerce-container">
+    <h2>Explore Products</h2>
+    
+    <!-- 🔍 Search Bar + Cart -->
+    <div class="top-bar">
+      <input
+      type="text"
+      placeholder="Search products..."
+      [(ngModel)]="searchQuery"
+      (input)="searchProducts()"
+      />
+      
+      <!-- 🛒 Cart Icon -->
+      <div class="cart-icon" (click)="toggleCart()">
+        🛒
+        <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
+        
+        <!-- Cart Dropdown -->
+        <div class="cart-panel" *ngIf="showCart">
+          <h3>Your Cart</h3>
+          
+          <div *ngIf="cart.length === 0">
+          <p>Your cart is empty.</p>
+        </div>
+        
+        <div *ngIf="cart.length > 0">
+          <ul class="cart-list">
+            <li *ngFor="let item of cart" class="cart-list-item">
+              <div class="cart-item">
+                <span class="cart-product">{{ item.product.productName }}</span>
+                <span class="cart-price">₹{{ item.product.price }}</span>
+                
+                <div class="quantity-controls">
+                  <button (click)="decreaseQuantity(item)">-</button>
+                  <span>{{ item.quantity }}</span>
+                  <button (click)="increaseQuantity(item)">+</button>
+                </div>
+
+                <button class="remove" (click)="removeFromCart(item)">Remove</button>
+              </div>
+            </li>
+          </ul>
+          
+          <p class="total">Total: ₹{{ cartTotal }}</p>
+          <button class="go-checkout" (click)="openCheckout(); showCart=false;">
+            Go to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Product Grid -->
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let product of filteredProducts">
+      <img
+      class="product-img"
+      src="https://cdn.vectorstock.com/i/1000v/35/12/supermarket-grocery-products-cartoon-vector-22713512.jpg"
+      alt="Product Image"
+      />
+      <h3>{{ product.productName }}</h3>
+      <p class="description">{{ product.description }}</p>
+      <p class="price">₹ {{ product.price }}</p>
+      <p class="stock">Available: {{ product.quantity }}</p>
+      
+      <button (click)="addToCart(product)">Add to Cart</button>
+      <button class="buy-now" (click)="openCheckout(product)">Buy Now</button>
+    </div>
+  </div>
+  
+  <!-- Checkout Modal -->
+  <div class="checkout-overlay" *ngIf="checkoutOpen">
+    <div class="checkout-modal">
+      <h3>Checkout</h3>
+      
+      <div *ngIf="selectedProduct">
+        <p><b>Product:</b> {{ selectedProduct.productName }}</p>
+        <p><b>Amount:</b> ₹{{ selectedProduct.price }}</p>
+        <p><b>Quantity:</b> 1</p>
+        
+        <!-- Payment Options -->
+        <div class="payment-method">
+          <label>
+            <input type="radio" [(ngModel)]="paymentMethod" value="account" />
+            Pay from Account
+          </label>
+          <label>
+            <input type="radio" [(ngModel)]="paymentMethod" value="wallet" />
+            Pay from Wallet
+          </label>
+        </div>
+        
+        <div class="checkout-actions">
+          <button class="pay" (click)="payNow()">Pay Now</button>
+          <button class="cancel" (click)="closeCheckout()">Cancel</button>
+        </div>
+      </div>
+
+      <div class="success-box" *ngIf="showSuccess">
+        ✅ Payment Successful!
+      </div>
+    </div>
+  </div>
+</div>
