@@ -58,7 +58,7 @@ public class LoginController {
         } else {
             return ResponseEntity.status(401).body("Invalid credentials");
         }
-    }
+   }
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody @Valid User user){
     try {
