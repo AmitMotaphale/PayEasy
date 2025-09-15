@@ -126,12 +126,53 @@ export class ProductEcommerceComponents implements OnInit {
   }
 
   payNow() {
-    // TODO: integrate with backend payment service
     this.showSuccess = true;
 
-    // Auto-close after 2 seconds
-    setTimeout(() => {
-      this.closeCheckout();
-    }, 2000);
-  }
+    if (this.selectedProduct?.productName === 'Cart Items') {
+      const updateRequests = this.cart.map(cartItem => {
+        const productToUpdate = {
+          productId: cartItem.product.productId!,
+          productName: cartItem.product.productName,
+          quantity: cartItem.product.quantity - cartItem.quantity,
+          price: cartItem.product.price,
+          description: cartItem.product.description,
+          merchantId: cartItem.product.merchantId
+        };
+
+        return this.productService.updateProduct(productToUpdate.productId, productToUpdate).toPromise();
+      });
+
+      Promise.all(updateRequests)
+        .then(() => {
+          this.cart = [];
+          this.saveCartToStorage();
+          this.loadProducts(); // ✅ refresh product list
+        })
+        .catch(error => {
+          console.error('Error updating product quantities:', error);
+        });
+
+    } else {
+      const productToUpdate = {
+        productId: this.selectedProduct.productId!,
+        productName: this.selectedProduct.productName,
+        quantity: this.selectedProduct.quantity - 1,
+        price: this.selectedProduct.price,
+        description: this.selectedProduct.description,
+        merchantId: this.selectedProduct.merchantId
+      };
+
+      this.productService.updateProduct(productToUpdate.productId, productToUpdate).subscribe({
+        next: () => {
+          console.log('Product quantity updated.');
+          this.loadProducts(); // ✅ refresh product list
+        },
+        error: err => console.error('Error updating product:', err)
+      });
+    }
+
+    setTimeout(() => this.closeCheckout(), 2000);
+}
+
+
 }
