@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { UserhomeComponent } from './userhome/userhome';
 import { WalletComponent } from './wallet/wallet';
 import { UserprofileComponent } from './userprofile/userprofile';
+import { FooterComponent } from '../../shared/footer/footer';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ import { UserprofileComponent } from './userprofile/userprofile';
     UserbankAccountComponent,
     UserhomeComponent,
     UserprofileComponent,
-    WalletComponent
+    WalletComponent,
 ],
   templateUrl: './home.html',
   styleUrl: './home.css'
