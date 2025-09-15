@@ -36,6 +36,14 @@ createWallet(userId: number): Observable<any> {
   );
 }
 
+updateProfile(userId: number, updatedData: any): Observable<any> {
+  const s1=localStorage.getItem('userId')
+  return this.http.put(
+    `${this.baseUrl}/payeasy-userserv/api/users/profile/${s1}`,
+    updatedData
+  );
+}
+
 registerMerch(merchantData: any): Observable<any> {
   return this.http.post(
     `${this.baseUrl}/payeasy-mercprodserv/api/merchants/register`,
