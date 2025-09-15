@@ -29,6 +29,13 @@ loginMerch(email: string, password: string): Observable<MerchantLoginResponse> {
   );
 }
 
+createWallet(userId: number): Observable<any> {
+  return this.http.post(
+    `http://localhost:8085/payeasy-paymentserv/api/wallets/create/${userId}`,
+    {} // empty body since only userId in path
+  );
+}
+
 registerMerch(merchantData: any): Observable<any> {
   return this.http.post(
     `${this.baseUrl}/payeasy-mercprodserv/api/merchants/register`,
