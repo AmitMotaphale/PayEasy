@@ -17,29 +17,95 @@ import { CommonModule } from '@angular/common';
   </div>
   `,
   styles: [`
+  .otp-container {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 40px 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .otp-logo {
+    width: 120px;
+    margin-bottom: 25px;
+  }
+
+  h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .form-control.otp-input {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto 20px;
+    padding: 12px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .form-control.otp-input:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 6px rgba(40, 167, 69, 0.2);
+    outline: none;
+  }
+
+  .otp-verify-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+
+  .otp-verify-btn:hover {
+    background-color: #218838;
+  }
+
+  .alert {
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+
+  .alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+
+  .alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    margin-top: 15px;
+  }
+  @media (max-width: 500px) {
     .otp-container {
-      max-width: 400px;
-      margin: 100px auto;
-      text-align: center;
-      padding: 30px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      margin: 50px 20px;
+      padding: 30px 20px;
     }
-    .otp-logo {
-      width: 100px;
-      margin-bottom: 20px;
-    }
-    .otp-input {
-      margin-bottom: 15px;
-      font-size: 18px;
-      text-align: center;
-    }
-    .otp-verify-btn {
-      width: 100%;
+
+    .form-control.otp-input {
       font-size: 16px;
     }
-  `],
+
+    .otp-verify-btn {
+      font-size: 15px;
+    }
+  }
+`],
   imports: [FormsModule ,CommonModule],
 })
 export class OtpVerify {
