@@ -18,6 +18,7 @@ public class Wallet {
 	private Long userId;
 	private Double balance;
 	private Timestamp lastUpdated;
+	private Timestamp createdAt;
 	public Long getWalletId() {
 		return walletId;
 	}
@@ -42,5 +43,12 @@ public class Wallet {
 	public void setLastUpdated(Timestamp lastUpdated) {
 		this.lastUpdated = lastUpdated;
 	}
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
+	}
+	
 
 }
