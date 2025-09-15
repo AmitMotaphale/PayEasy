@@ -1,13 +1,16 @@
 package com.payeasy.payment.controller;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.payeasy.payment.dto.SendMoneyRequest;
@@ -28,26 +31,26 @@ public class WalletController {
         Wallet wallet = walletService.createWallet(userId);
         return ResponseEntity.ok(wallet);
     }
-<<<<<<< HEAD
-	
-	@GetMapping("/user/{userId}")
-	public ResponseEntity<?> getWallet(@PathVariable Long userId){
-		Optional<Wallet> walletOpt = walletService.getWalletByUserId(userId);
-	    if(walletOpt.isPresent()) {
-	        return ResponseEntity.ok(walletOpt.get());
-	    } else {
-	        return ResponseEntity.badRequest().body("Wallet not found");
-	    }
-	}
 
 	
-	@PutMapping("/user/{userId}/add")
-    public ResponseEntity<?> addFunds(@PathVariable Long userId, @RequestParam Double amount) {
-        Wallet wallet = walletService.addFunds(userId, amount);
-        if (wallet != null) return ResponseEntity.ok(wallet);
-        else return ResponseEntity.badRequest().body("Wallet not found");
-=======
+//	@GetMapping("/user/{userId}")
+//	public ResponseEntity<?> getWallet(@PathVariable Long userId){
+//		Optional<Wallet> walletOpt = walletService.getWalletByUserId(userId);
+//	    if(walletOpt.isPresent()) {
+//	        return ResponseEntity.ok(walletOpt.get());
+//	    } else {
+//	        return ResponseEntity.badRequest().body("Wallet not found");
+//	    }
+//	}
 
+	
+//	@PutMapping("/user/{userId}/add")
+//    public ResponseEntity<?> addFunds(@PathVariable Long userId, @RequestParam Double amount) {
+//        Wallet wallet = walletService.addFunds(userId, amount);
+//        if (wallet != null) return ResponseEntity.ok(wallet);
+//        else return ResponseEntity.badRequest().body("Wallet not found");
+//=======
+//
     @GetMapping("/user/{userId}")
     public ResponseEntity<?> getWallet(@PathVariable Long userId) {
     	var walletOpt = walletService.getWalletByUserId(userId);
@@ -56,7 +59,6 @@ public class WalletController {
         } else {
             return ResponseEntity.badRequest().body("Wallet not found");
         }
->>>>>>> 9d42a89af5197eb807abf9d37b0a0077667ac922
     }
 
     @PostMapping("/user/{userId}/add")
