@@ -1,15 +1,8 @@
-import { Component } from '@angular/core';
+// src/app/transactions/transactions.ts
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
-interface Transaction {
-  id: string;
-  product: string;
-  purchasedBy: string;
-  amount: number;
-  date: string;
-  status: string;
-}
+import { TransactionService, Transaction } from '../../../../services/transactions';
 
 @Component({
   selector: 'app-transactions',
@@ -18,26 +11,40 @@ interface Transaction {
   styleUrl: './transactions.css',
   imports: [CommonModule, FormsModule],
 })
-export class TransactionsComponent {
-  transactions: Transaction[] = [
-    { id: '#T001', product: 'Product A', purchasedBy: 'Rahul Sharma', amount: 1500, date: '2025-09-10', status: 'Success' },
-    { id: '#T002', product: 'Product B', purchasedBy: 'Anita Verma', amount: 2000, date: '2025-09-11', status: 'Pending' },
-    { id: '#T003', product: 'Product C', purchasedBy: 'Suresh Kumar', amount: 750, date: '2025-09-12', status: 'Failed' },
-    { id: '#T004', product: 'Product D', purchasedBy: 'Neha Singh', amount: 3200, date: '2025-09-12', status: 'Success' },
-    { id: '#T005', product: 'Product E', purchasedBy: 'Amit Patel', amount: 1200, date: '2025-09-12', status: 'Pending' },
-  ];
+export class TransactionsComponent implements OnInit {
+  transactions: Transaction[] = [];
+  filteredTransactions: Transaction[] = [];
 
-  filteredTransactions: Transaction[] = [...this.transactions];
   searchText: string = '';
   selectedStatus: string = '';
+
+  constructor(private transactionService: TransactionService) {}
+
+  ngOnInit() {
+    // Example: fetch transactions for userId from localStorage
+    const merchantId = localStorage.getItem('merchantId');
+    if (merchantId) {
+      this.transactionService.getMerchantTransactions(+merchantId).subscribe({
+        next: (data) => {
+          // if backend doesn’t provide status, you can assign it randomly/dynamically
+          this.transactions = data.map((txn) => ({
+            ...txn,
+            status: txn.status || 'Success', // default if backend has no status
+          }));
+          this.filteredTransactions = [...this.transactions];
+        },
+        error: (err) => console.error('Error fetching transactions:', err),
+      });
+    }
+  }
 
   applyFilter() {
     this.filteredTransactions = this.transactions.filter((txn) => {
       const matchesSearch =
         this.searchText === '' ||
-        txn.product.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        txn.id.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        txn.purchasedBy.toLowerCase().includes(this.searchText.toLowerCase());
+        txn.productId.toString().includes(this.searchText) ||
+        txn.transactionId.toString().includes(this.searchText) ||
+        txn.userName.toLowerCase().includes(this.searchText.toLowerCase());
 
       const matchesStatus =
         this.selectedStatus === '' || txn.status === this.selectedStatus;

@@ -1,0 +1,120 @@
+.transactions-container {
+  padding: 30px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: #f9fafc;
+  border-radius: 16px;
+  max-width: 950px;
+  margin: 40px auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+h2 {
+  margin-bottom: 25px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Filter Bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.filter-bar input,
+.filter-bar select {
+  flex: 1;
+  min-width: 220px;
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.filter-bar input:focus,
+.filter-bar select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 8px rgba(99,102,241,0.2);
+}
+
+/* Transactions Table */
+.transactions-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+  font-size: 14px;
+}
+
+.transactions-table th {
+  background: #f3f4f6;
+  color: #4b5563;
+  font-weight: 600;
+  padding: 14px 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.transactions-table td {
+  padding: 14px 18px;
+  text-align: center;
+  color: #374151;
+}
+
+.transactions-table tbody tr {
+  transition: background 0.25s ease;
+  cursor: pointer;
+}
+
+.transactions-table tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.transactions-table tbody tr:hover {
+  background: #e5e7eb;
+}
+
+/* Status Badges */
+.status {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status.success {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status.failed {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Empty Message */
+.empty-message {
+  text-align: center;
+  padding: 50px 20px;
+  font-size: 16px;
+  color: #6b7280;
+  font-weight: 500;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.03);
+  margin-top: 20px;
+}

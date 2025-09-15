@@ -24,9 +24,14 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.baseUrl}/merchant/${merchantId}`);
   }
 
+
   addProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(this.baseUrl, product);
   }
+
+  getAllProducts(): Observable<Product[]> {
+  return this.http.get<Product[]>(this.baseUrl);
+}
 
   updateProduct(productId: number, product: Product): Observable<Product> {
     return this.http.put<Product>(`${this.baseUrl}/${productId}`, product);

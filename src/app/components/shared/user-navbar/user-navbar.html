@@ -12,14 +12,15 @@
       <li (click)="selectMenu('transactions')" [class.active]="activeMenu === 'transactions'"><a>Transaction History</a></li>
     </ul>
   </div>
-
+  
   <div class="nav-right">
     <div class="user-avatar" (click)="toggleDropdown()">
       <img src="https://img.freepik.com/premium-photo/anime-male-avatar_950633-956.jpg" alt="User Avatar" />
       <ul class="dropdown" [class.show]="dropdownOpen">
-        <li><a routerLink="/user/wallet">Wallet</a></li>
-        <li><a routerLink="/user/transactions">Transactions</a></li>
-        <li><a routerLink="/user/profile">Profile</a></li>
+        <!-- <li><a routerLink="/user/wallet">Wallet</a></li> -->
+        <li (click)="selectMenu('wallet')" [class.active]="activeMenu === 'wallet'"><a>Wallet</a></li>
+        <li (click)="selectMenu('transactions')" [class.active]="activeMenu === 'transactions'"><a>Order History</a></li>
+        <li (click)="selectMenu('userprofile')" [class.active]="activeMenu === 'userprofile'"><a>Profile</a></li>
         <li><a (click)="logout()">Logout</a></li>
       </ul>
     </div>

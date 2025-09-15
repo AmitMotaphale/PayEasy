@@ -1,0 +1,68 @@
+<div class="wallet-container">
+  <div class="wallet-header">
+    <img src="https://cdn-icons-png.flaticon.com/512/833/833314.png" alt="Wallet" class="wallet-logo" />
+    <div>
+      <h2>My Wallet</h2>
+      <p class="wallet-balance">₹{{ walletBalance.toFixed(2) }}</p>
+    </div>
+  </div>
+
+  <div class="add-money-section">
+    <h3>Add Money to Wallet</h3>
+
+    <form (ngSubmit)="openConfirmDialog()" #moneyForm="ngForm">
+      <input
+        type="number"
+        [(ngModel)]="addAmount"
+        name="amount"
+        min="1"
+        placeholder="Enter amount"
+        required
+      />
+
+  <select [(ngModel)]="selectedBank" name="bank" required>
+  <option value="" disabled selected>Select Bank Account</option>
+  <option *ngFor="let account of bankAccounts" [value]="account.bankId">
+    {{ account.bankName }} - {{ account.accountNumber }}
+  </option>
+</select>
+
+
+      <button type="submit" [disabled]="!moneyForm.form.valid">Add Money</button>
+    </form>
+  </div>
+
+  <div class="transactions-section">
+    <h3>Wallet Transactions</h3>
+    <ul class="transaction-list">
+    <li *ngFor="let tx of transactions">
+  <span class="tx-date">{{ tx.createdAt | date:'yyyy-MM-dd' }}</span>
+  <span class="tx-type">{{ tx.txnType === 'ADD' ? 'Added' : 'Paid' }}</span>
+  <span class="tx-amount" [class.positive]="tx.amount > 0" [class.negative]="tx.amount < 0">
+    ₹{{ tx.amount > 0 ? '+' : '' }}{{ tx.amount }}
+  </span>
+</li>
+
+
+    </ul>
+  </div>
+
+  <!-- Confirm Dialog -->
+  <div class="modal" *ngIf="showConfirm">
+    <div class="modal-content">
+      <p>
+  Confirm adding ₹{{ addAmount }} from "{{ getBankName(selectedBank) }}"?
+</p>
+      <button (click)="confirmAddMoney()">Confirm</button>
+      <button class="cancel-btn" (click)="cancelAddMoney()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Success Dialog -->
+  <div class="modal" *ngIf="showSuccess">
+    <div class="modal-content">
+      <p class="success-check">✔</p>
+      <p>Money Added Successfully!</p>
+    </div>
+  </div>
+</div>

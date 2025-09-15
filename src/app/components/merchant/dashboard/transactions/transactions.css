@@ -82,3 +82,14 @@ h2 {
   border-bottom: 1px solid #f0f0f0;
   white-space: nowrap;
 }
+
+.empty-message {
+  text-align: center;
+  padding: 40px;
+  font-size: 16px;
+  color: #666;
+  font-weight: 500;
+  background: #f9fafc;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
