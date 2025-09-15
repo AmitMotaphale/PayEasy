@@ -42,6 +42,8 @@ public class WalletController {
 	        return ResponseEntity.badRequest().body("Wallet not found");
 	    }
 	}
+
+	
 	@PutMapping("/user/{userId}/add")
     public ResponseEntity<?> addFunds(@PathVariable Long userId, @RequestParam Double amount) {
         Wallet wallet = walletService.addFunds(userId, amount);
