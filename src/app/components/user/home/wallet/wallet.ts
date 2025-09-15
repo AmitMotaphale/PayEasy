@@ -1,35 +1,79 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Userbank, BankAccount } from '../../../../services/userbank';
+
+interface BackendTransaction {
+  txnId: number;
+  userId: number;
+  walletId: number;
+  bankId?: number;
+  merchantId?: number;
+  txnType: string;
+  amount: number;
+  status: string;
+  description?: string;
+  createdAt: string;
+}
+
 
 @Component({
   selector: 'app-wallet',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './wallet.html',
   styleUrls: ['./wallet.css']
 })
-export class WalletComponent {
-  walletBalance = 1250.75;
+export class WalletComponent implements OnInit {
+  walletBalance: number = 0;
   addAmount: number = 0;
-  selectedBank = '';
-  bankAccounts = ['HDFC - 2451', 'SBI - 3432', 'ICICI - 9991'];
-
+  selectedBank: number | null = null;
+  bankAccounts: BankAccount[] = [];
+  transactions: BackendTransaction[] = [];
   showConfirm = false;
   showSuccess = false;
+  private userId: number = Number(localStorage.getItem('userId'));
+  private walletBaseUrl = 'http://localhost:8085/payeasy-paymentserv/api/wallets';
 
-  transactions = [
-    { date: '2025-09-10', type: 'Added', amount: 500 },
-    { date: '2025-09-08', type: 'Paid', amount: -250 },
-    { date: '2025-09-05', type: 'Added', amount: 1000 },
-  ];
+  constructor(private http: HttpClient, private userbank: Userbank) {}
 
-  // Step 1: Trigger confirmation dialog
-  requestAddMoney() {
-    if (this.addAmount > 0 && this.selectedBank) {
-      this.showConfirm = true;
-    }
+  ngOnInit() {
+    this.loadWallet();
+    this.loadBankAccounts();
+    this.loadTransactions();
   }
+
+  loadWallet() {
+    this.http.get<{ walletId: number; userId: number; balance: number }>(`${this.walletBaseUrl}/user/${this.userId}`)
+      .subscribe({
+        next: (res) => this.walletBalance = res.balance,
+        error: (err) => console.error('Error fetching wallet', err)
+      });
+  }
+
+  loadBankAccounts() {
+    this.userbank.getBankAccountsByUser(this.userId).subscribe({
+      next: (res) => this.bankAccounts = res,
+      error: (err) => console.error('Error fetching bank accounts', err)
+    });
+  }
+
+  loadTransactions() {
+  this.http.get<BackendTransaction[]>(`http://localhost:8085/payeasy-paymentserv/api/transactions/user/${this.userId}`)
+    .subscribe({
+      next: (res) => {
+        if (Array.isArray(res)) {
+          this.transactions = res;
+        } else {
+          console.error('Transactions API did not return an array', res);
+          this.transactions = [];
+        }
+      },
+      error: (err) => console.error('Error fetching transactions', err)
+    });
+}
+
 
   openConfirmDialog() {
     if (this.addAmount > 0 && this.selectedBank) {
@@ -37,31 +81,36 @@ export class WalletComponent {
     }
   }
 
-  // Step 2: User confirms adding money
   confirmAddMoney() {
-    this.walletBalance += this.addAmount;
-    this.transactions.unshift({
-      date: new Date().toISOString().split('T')[0],
-      type: 'Added',
+    if (!this.selectedBank) return;
+    const payload = {
       amount: this.addAmount,
+      bankId: this.selectedBank
+    };
+    this.http.post<any>(`${this.walletBaseUrl}/user/${this.userId}/add`, payload).subscribe({
+      next: (res) => {
+        this.loadWallet();
+        this.loadTransactions();
+        this.addAmount = 0;
+        this.selectedBank = null;
+        this.showConfirm = false;
+        this.showSuccess = true;
+        setTimeout(() => this.showSuccess = false, 2000);
+      },
+      error: (err) => {
+        console.error('Error adding funds', err);
+        this.showConfirm = false;
+      }
     });
-
-    // Reset input fields
-    this.addAmount = 0;
-    this.selectedBank = '';
-
-    // Close confirm, show success
-    this.showConfirm = false;
-    this.showSuccess = true;
-
-    // Auto-close success after 2 seconds
-    setTimeout(() => {
-      this.showSuccess = false;
-    }, 2000);
   }
 
-  // Optional: cancel confirm dialog
   cancelAddMoney() {
     this.showConfirm = false;
+  }
+
+  getBankName(bankId: number | null): string {
+    if (!bankId) return '';
+    const bank = this.bankAccounts.find(b => b.bankId === bankId);
+    return bank ? bank.bankName : '';
   }
 }
