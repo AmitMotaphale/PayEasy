@@ -25,7 +25,7 @@ public class Transaction {
 	@NotNull(message = "Wallet ID is required")
 	private Long walletId;
 	
-	@NotNull(message = "Bank ID is required")
+//	@NotNull(message = "Bank ID is required")
 	private Long bankId;
 	
 //	@NotNull(message = "Merchant ID is required")
