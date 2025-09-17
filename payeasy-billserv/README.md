@@ -106,6 +106,7 @@ Response:
 
 #### Pay Bill
 Example: http://localhost:8085/payeasy-billserv/api/bills/5/pay , No body
+
 Response for `PUT /{billId}/pay` exist:
 ```
 {
