@@ -163,9 +163,8 @@ Response for '/user/{userId}/status/{status}`:
         "createdAt": "2025-09-17T11:43:13.233+00:00"
     }
 ]
-```
 
-```
+
 
 
 ## How to Test
