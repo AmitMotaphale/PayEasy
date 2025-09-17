@@ -67,14 +67,6 @@ Inside the `<dependencies>` section, add:
 ---
 
 ### Step 4: Reload Maven Project and Build
-
-After making these changes:
-
-- Reload or reimport your Maven project in your IDE.
-- Run `mvn clean install` or your build command.
-
-The *missing version* error should be resolved, and your Eureka Client dependency will be properly managed.
-
 ---
 
 ## Additional Tips
@@ -113,7 +105,3 @@ The *missing version* error should be resolved, and your Eureka Client dependenc
 </dependencies>
 ```
 
----
-
-Following these steps will ensure that your Spring Cloud dependencies like the Eureka client function correctly without versioning issues.
-```
