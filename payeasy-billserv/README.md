@@ -1,4 +1,3 @@
-```markdown
 # PayEasy Bills Service
 
 ## Overview
