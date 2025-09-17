@@ -120,7 +120,7 @@ is forwarded to User Service’s `/api/users/register` endpoint.
 ## Service Documentation Links
 
 See individual service READMEs for full API details, request/response examples, and configuration:
-- [User Service](./payeasy-userserv/README.md)
+- [User Service](./payeasy-userbankaccserv/README.md)
 - [Notification Service](./payeasy-notificationserv/README.md)
 - [Bank Account Service](./payeasy-bankaccserv/README.md)
 - [Bill Service](./payeasy-billserv/README.md)
