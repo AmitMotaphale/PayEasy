@@ -128,6 +128,7 @@ Body: "Bill not found"
 
 Status : PENDING & SUBMITTED
 EXAMPLE: http://localhost:8085/payeasy-billserv/api/bills/user/1/status/PENDING
+
 Response for '/user/{userId}/status/{status}`:
 
 ```
@@ -163,7 +164,7 @@ Response for '/user/{userId}/status/{status}`:
         "createdAt": "2025-09-17T11:43:13.233+00:00"
     }
 ]
-
+```
 
 
 
