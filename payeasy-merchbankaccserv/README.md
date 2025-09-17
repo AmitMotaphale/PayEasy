@@ -1,7 +1,7 @@
-# PayEasy Bank Account Service
+# PayEasy Merchant Bank Account Service
 
 ## Overview
-The Bank Account Service is a Spring Boot microservice that manages user bank accounts within the PayEasy ecosystem. It allows users to link, update, retrieve, and manage multiple bank accounts, including marking a primary bank account.
+The Merchant Bank Account Service is a Spring Boot microservice that manages user bank accounts within the PayEasy ecosystem. It allows users to link, update, retrieve, and manage multiple bank accounts, including marking a primary bank account.
 
 ## Features
 - Add new bank accounts for users
