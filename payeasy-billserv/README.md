@@ -40,7 +40,7 @@ The Bills Service is a Spring Boot microservice responsible for managing user bi
    spring.datasource.password=YOUR_DB_PASSWORD
    spring.jpa.hibernate.ddl-auto=update
    spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
-spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.OracleDialect
+   spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.OracleDialect
    ```
 
 3. Automatically the `BILLS` table is created in Oracle database:
@@ -66,13 +66,13 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.OracleDialect
 ## API Documentation
 
 ### Base URL
-`http://localhost:8081/api/bills`
+`http://localhost:8085/payeasy-billserv/api/bills`
 
 ### Endpoints
 
 | Method | Endpoint                  | Description                             |
-| ------ | -------------------------| ------------------------------------- |
-| POST   | `/`                      | Create a new bill                      |
+| ------ | ------------------------- | ------------------------------------- |
+| POST   | `/`                       | Create a new bill                      |
 | GET    | `/user/{userId}`          | List bills for given user              |
 | GET    | `/user/{userId}/status/{status}` | List bills by status for user            |
 | PUT    | `/{billId}/pay`           | Mark a bill as paid                    |
@@ -80,46 +80,44 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.OracleDialect
 ### Sample Requests / Responses
 
 #### Create Bill
+Example: http://localhost:8085/payeasy-billserv/api/bills
 Request:
 ```
 {
-  "userId": 1,
-  "billerName": "Electricity Board",
-  "billType": "Electricity",
-  "accountNumber": "ACC123456",
-  "amount": 1500.0,
-  "status": "PENDING",
-  "dueDate": "2025-09-15"
+  "userId": 101,
+  "userName": "Ravi Kumar",
+  "billType": "ELECTRICITY",
+  "customerId": "ELEC-0091234",
+  "amount": 1200.50
 }
 ```
 Response:
 ```
 {
-  "billId": 10,
-  "userId": 1,
-  "billerName": "Electricity Board",
-  "billType": "Electricity",
-  "accountNumber": "123456",
-  "amount": 1500.0,
-  "status": "PENDING",
-  "dueDate": "2025-09-15T00:00:00.000+00:00",
-  "createdAt": "2025-08-28T05:00:00.000+00:00"
+    "billId": 1,
+    "userId": 101,
+    "userName": "Ravi Kumar",
+    "billType": "ELECTRICITY",
+    "customerId": "ELEC-0091234",
+    "amount": 1200.5,
+    "status": "PENDING",
+    "createdAt": "2025-09-17T08:55:00.449+00:00"
 }
 ```
 
 #### Pay Bill
-Response for `PUT /{billId}/pay` when bill exists:
+Example: http://localhost:8085/payeasy-billserv/api/bills/5/pay , No body
+Response for `PUT /{billId}/pay` exist:
 ```
 {
-  "billId": 10,
-  "userId": 1,
-  "billerName": "Electricity Board",
-  "billType": "Electricity",
-  "accountNumber": "123456",
-  "amount": 1500.0,
-  "status": "PAID",
-  "dueDate": "2025-09-15T00:00:00.000+00:00",
-  "createdAt": "2025-08-28T05:00:00.000+00:00"
+    "billId": 1,
+    "userId": 101,
+    "userName": "Ravi Kumar",
+    "billType": "ELECTRICITY",
+    "customerId": "ELEC-0091234",
+    "amount": 1200.5,
+    "status": "SUBMITTED",
+    "createdAt": "2025-09-17T08:55:00.449+00:00"
 }
 ```
 If bill not found:
@@ -128,7 +126,47 @@ HTTP 400 Bad Request
 Body: "Bill not found"
 ```
 
----
+Status : PENDING & SUBMITTED
+EXAMPLE: http://localhost:8085/payeasy-billserv/api/bills/user/1/status/PENDING
+Response for '/user/{userId}/status/{status}`:
+
+```
+[
+    {
+        "billId": 7,
+        "userId": 1,
+        "userName": "Krish",
+        "billType": "ELECTRICITY",
+        "customerId": "ELEC-0091234",
+        "amount": 129.5,
+        "status": "PENDING",
+        "createdAt": "2025-09-17T11:43:11.864+00:00"
+    },
+    {
+        "billId": 8,
+        "userId": 1,
+        "userName": "Krish",
+        "billType": "ELECTRICITY",
+        "customerId": "ELEC-0091234",
+        "amount": 129.5,
+        "status": "PENDING",
+        "createdAt": "2025-09-17T11:43:12.658+00:00"
+    },
+    {
+        "billId": 9,
+        "userId": 1,
+        "userName": "Krish",
+        "billType": "ELECTRICITY",
+        "customerId": "ELEC-0091234",
+        "amount": 129.5,
+        "status": "PENDING",
+        "createdAt": "2025-09-17T11:43:13.233+00:00"
+    }
+]
+```
+
+```
+
 
 ## How to Test
 
