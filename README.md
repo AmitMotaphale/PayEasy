@@ -51,6 +51,15 @@ server.port=your-service-port
     <groupId>org.springframework.cloud</groupId>
     <artifactId>spring-cloud-starter-gateway</artifactId>
 </dependency>
+
+```
+### Swagger Dependency:
+```
+ <dependency>
+  <groupId>org.springdoc</groupId>
+  <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+  <version>2.8.13</version>  <!-- latest stable at the time of writing -->
+</dependency>
 ```
 
 ### API Gateway application.properties
@@ -116,6 +125,7 @@ See individual service READMEs for full API details, request/response examples, 
 - [Bank Account Service](./payeasy-bankaccserv/README.md)
 - [Bill Service](./payeasy-billserv/README.md)
 - [Merchant/Product Service](./payeasy-merchprodserv/README.md)
+- [Merchant/Product Bank Service](./payeasy-merchbankaccserv/README.md)
 - [Payment Service](./payeasy-paymentserv/README.md)
 - [API Gateway](./payeasy-api-gateway/README.md)
 - [Eureka Server](./payeasy-eureka-server/README.md)
