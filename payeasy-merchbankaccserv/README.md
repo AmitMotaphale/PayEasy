@@ -1,4 +1,3 @@
-```markdown
 # PayEasy Bank Account Service
 
 ## Overview
