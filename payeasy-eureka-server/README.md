@@ -1,4 +1,3 @@
-```markdown
 # Setting up Spring Cloud Eureka Client Dependency in Maven Project
 
 This guide explains how to properly add the **Spring Cloud Netflix Eureka Client** dependency in a Maven Spring Boot project and avoid versioning errors by using the Spring Cloud BOM (Bill of Materials).
