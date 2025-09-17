@@ -177,7 +177,7 @@ Use Postman or curl to test APIs:
 - Filter bills by status (GET `/api/bills/user/{userId}/status/{status}`)
 - Pay bill (PUT `/api/bills/{billId}/pay`)
 
----
+
 
 ## Future Enhancements
 
@@ -185,10 +185,3 @@ Use Postman or curl to test APIs:
 - Add authentication and authorization for secure access
 - Implement pagination and filtering for bill listings
 - Publish events on bill status changes for other services
-
----
-
-## License
-
-MIT License
-```
