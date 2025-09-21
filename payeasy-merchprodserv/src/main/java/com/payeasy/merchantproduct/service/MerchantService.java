@@ -53,16 +53,17 @@ public class MerchantService {
             merchant.setMerchantName(merchantDetails.getMerchantName());
             merchant.setContactNumber(merchantDetails.getContactNumber());
             merchant.setEmail(merchantDetails.getEmail());
-            if(merchantDetails.getPassword()!=null && !merchantDetails.getPassword().trim().isEmpty()) {
-            	// Future Implmentation Hash Password
-                // merchant.setPassword(passwordEncoder.encode(merchantDetails.getPassword()));
+
+            if (merchantDetails.getPassword() != null && !merchantDetails.getPassword().trim().isEmpty()) {
+                // Future Implementation: hash password
                 merchant.setPassword(merchantDetails.getPassword());
             }
-            merchant.setPassword(null);
+
             return merchantRepository.save(merchant);
         }
         return null;
     }
+
 
     public boolean deleteMerchant(Long merchantId) {
         Optional<Merchant> optMerchant = merchantRepository.findById(merchantId);
