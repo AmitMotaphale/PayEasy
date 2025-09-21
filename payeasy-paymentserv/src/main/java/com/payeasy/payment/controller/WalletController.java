@@ -31,26 +31,6 @@ public class WalletController {
         Wallet wallet = walletService.createWallet(userId);
         return ResponseEntity.ok(wallet);
     }
-
-	
-//	@GetMapping("/user/{userId}")
-//	public ResponseEntity<?> getWallet(@PathVariable Long userId){
-//		Optional<Wallet> walletOpt = walletService.getWalletByUserId(userId);
-//	    if(walletOpt.isPresent()) {
-//	        return ResponseEntity.ok(walletOpt.get());
-//	    } else {
-//	        return ResponseEntity.badRequest().body("Wallet not found");
-//	    }
-//	}
-
-	
-//	@PutMapping("/user/{userId}/add")
-//    public ResponseEntity<?> addFunds(@PathVariable Long userId, @RequestParam Double amount) {
-//        Wallet wallet = walletService.addFunds(userId, amount);
-//        if (wallet != null) return ResponseEntity.ok(wallet);
-//        else return ResponseEntity.badRequest().body("Wallet not found");
-//=======
-//
     @GetMapping("/user/{userId}")
     public ResponseEntity<?> getWallet(@PathVariable Long userId) {
     	var walletOpt = walletService.getWalletByUserId(userId);
