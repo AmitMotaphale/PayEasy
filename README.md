@@ -1,6 +1,3 @@
-Here’s a comprehensive root `README.md` for your PayEasy Spring Boot microservices architecture. This covers port details, endpoints, dependencies, discovery setup, and cross-links to service documentation:
-
-```markdown
 # PayEasy Microservices Architecture
 
 ## Overview

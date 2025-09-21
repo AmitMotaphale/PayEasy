@@ -1,4 +1,3 @@
-```markdown
 # PayEasy Notification Service
 
 ## Overview
