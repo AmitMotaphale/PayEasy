@@ -1,4 +1,3 @@
-```markdown
 # PayEasy User Service
 
 ## Overview
@@ -32,7 +31,7 @@ The User Service is a Spring Boot microservice that handles user registration, l
 
 1. Clone the repository:
    ```
-   git clone <your-repo-url>
+   git clone https://github.com/Kr1sh-gupta/PayEasy/
    cd user-service
    ```
 
