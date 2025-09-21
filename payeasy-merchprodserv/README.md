@@ -1,4 +1,3 @@
-```markdown
 # PayEasy Merchant and Product Service
 
 ## Overview
@@ -15,6 +14,7 @@ The Merchant and Product Service is a Spring Boot microservice managing merchant
 - Spring Data JPA with Oracle 19c
 - RESTful API design
 - Managed via Maven in Eclipse IDE
+- Used Spring Tools Suite
 
 ## Setup Instructions
 
@@ -22,33 +22,28 @@ The Merchant and Product Service is a Spring Boot microservice managing merchant
 - Oracle Database 19c installed and running
 - Java JDK 17 or above
 - Eclipse IDE with Spring Boot support
-- Port 8080 available
+- Port 8083 available
 
 ### Configuration
 
 Configure your `src/main/resources/application.properties` file as below:
 
 ```
+spring.application.name=payeasy-mercprodserv
+server.port=8083
 spring.datasource.url=jdbc:oracle:thin:@localhost:1521:orcl
 spring.datasource.username=payeasy
 spring.datasource.password=payeasy
-
-# Hibernate settings
+ #create,create-drop,update, none
 spring.jpa.hibernate.ddl-auto=create
 spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.OracleDialect
-spring.jpa.properties.hibernate.show_sql=true
-spring.jpa.properties.hibernate.format_sql=false
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.OracleDialect
 ```
-
-> Note: `spring.jpa.hibernate.ddl-auto=create` recreates tables on each startup. Change to `update` or `none` in production.
-
----
 
 ## API Documentation
 
 ### Base URL
-`http://localhost:8080/api`
+`http://localhost:8085/payeasy-mercprodserv`
 
 ### Merchant Endpoints
 
