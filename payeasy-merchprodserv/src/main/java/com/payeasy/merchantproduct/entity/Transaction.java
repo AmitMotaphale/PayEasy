@@ -20,6 +20,7 @@ public class Transaction {
     private Long productId;
 
     private int quantityBought; // purchased
+    @Column(name = "AMOUNT", nullable = false)
     private Double totalAmount; // totalAmount = price * qty
     private Timestamp createdAt;
 	public Long getTransactionId() {
