@@ -33,4 +33,15 @@ export class TransactionService {
   getMerchantTransactions(merchantId: number): Observable<Transaction[]> {
     return this.http.get<Transaction[]>(`${this.baseUrl}/merchant/${merchantId}`);
   }
+  
+  buyProductTransaction(transactionData: {
+  userId: number;
+  userName: string;
+  userEmail: string;
+  productId: number;
+  quantity: number;
+  merchantId?: number;
+}): Observable<Transaction> {
+  return this.http.post<Transaction>(`${this.baseUrl}/buy`, transactionData);
+}
 }

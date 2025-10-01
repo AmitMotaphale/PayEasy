@@ -6,6 +6,7 @@ import { TransactionService, Transaction } from '../../../../services/transactio
 
 @Component({
   selector: 'app-usertransactions',
+  standalone: true,
   imports: [CommonModule , FormsModule],
   templateUrl: './user-transactions.html',
   styleUrl: './user-transactions.css'

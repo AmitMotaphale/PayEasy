@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductService, Product } from '../../../../services/product';
+import { TransactionService } from '../../../../services/transactions';
 
 interface CartItem {
   product: Product;
@@ -12,6 +13,7 @@ interface CartItem {
   selector: 'app-ecommerce',
   standalone: true,
   imports: [CommonModule, FormsModule],
+  providers: [TransactionService],
   templateUrl: './ecommerce.html',
   styleUrls: ['./ecommerce.css']
 })
@@ -28,7 +30,10 @@ export class ProductEcommerceComponents implements OnInit {
   paymentMethod: 'account' | 'wallet' = 'account';
   showSuccess = false;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private transactionService: TransactionService
+  ) {}
 
   ngOnInit(): void {
     this.loadProducts();
@@ -128,51 +133,51 @@ export class ProductEcommerceComponents implements OnInit {
   payNow() {
     this.showSuccess = true;
 
+    const userId = Number(localStorage.getItem('userId'));
+    const userName = localStorage.getItem('userName') || localStorage.getItem('fullName') || 'Unknown';
+    const userEmail = localStorage.getItem('userEmail') || localStorage.getItem('email') || 'unknown@example.com';
+
     if (this.selectedProduct?.productName === 'Cart Items') {
-      const updateRequests = this.cart.map(cartItem => {
-        const productToUpdate = {
+      // Directly create transactions for each cart item; backend will atomically reduce stock
+      const txnRequests = this.cart.map(cartItem =>
+        this.transactionService.buyProductTransaction({
+          userId,
+          userName,
+          userEmail,
           productId: cartItem.product.productId!,
-          productName: cartItem.product.productName,
-          quantity: cartItem.product.quantity - cartItem.quantity,
-          price: cartItem.product.price,
-          description: cartItem.product.description,
+          quantity: cartItem.quantity,
           merchantId: cartItem.product.merchantId
-        };
+        }).toPromise()
+      );
 
-        return this.productService.updateProduct(productToUpdate.productId, productToUpdate).toPromise();
-      });
-
-      Promise.all(updateRequests)
+      Promise.all(txnRequests)
         .then(() => {
           this.cart = [];
           this.saveCartToStorage();
-          this.loadProducts(); // ✅ refresh product list
+          this.loadProducts(); // refresh product list
         })
-        .catch(error => {
-          console.error('Error updating product quantities:', error);
+        .catch(err => {
+          console.error('Error creating transactions:', err);
         });
 
-    } else {
-      const productToUpdate = {
+    } else if (this.selectedProduct) {
+      // Single product purchase -> only create transaction; backend reduces stock
+      this.transactionService.buyProductTransaction({
+        userId,
+        userName,
+        userEmail,
         productId: this.selectedProduct.productId!,
-        productName: this.selectedProduct.productName,
-        quantity: this.selectedProduct.quantity - 1,
-        price: this.selectedProduct.price,
-        description: this.selectedProduct.description,
+        quantity: 1,
         merchantId: this.selectedProduct.merchantId
-      };
-
-      this.productService.updateProduct(productToUpdate.productId, productToUpdate).subscribe({
+      }).subscribe({
         next: () => {
-          console.log('Product quantity updated.');
-          this.loadProducts(); // ✅ refresh product list
+          console.log('Transaction logged.');
+          this.loadProducts();
         },
-        error: err => console.error('Error updating product:', err)
+        error: err => console.error('Error logging transaction:', err)
       });
     }
 
     setTimeout(() => this.closeCheckout(), 2000);
-}
-
-
+  }
 }

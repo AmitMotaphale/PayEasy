@@ -42,6 +42,9 @@ export class UserLoginComponent {
           localStorage.setItem('userId', res.userId.toString());
           localStorage.setItem('fullName', res.fullName);
           localStorage.setItem('email', res.email);
+          // Keep duplicate keys for compatibility across components using different keys
+          localStorage.setItem('userName', res.fullName);
+          localStorage.setItem('userEmail', res.email);
           localStorage.setItem('mobile', res.mobile.toString());
         }
         else {
