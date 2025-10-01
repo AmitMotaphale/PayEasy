@@ -13,7 +13,9 @@ public class Transaction {
     private Long transactionId;
 
     private Long userId;     //fetched by DTO via Localstorage ~KG
+    @Column(name = "USERNAME")
     private String userName;  //fetched by DTO via Localstorage ~KG
+    @Column(name = "USER_EMAIL")
     private String userEmail; 
 
     private Long merchantId;
