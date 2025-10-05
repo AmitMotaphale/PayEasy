@@ -114,6 +114,8 @@ is forwarded to User Service’s `/api/users/register` endpoint.
 - `GET /api/payments/user/{userId}` – Payment history for user
 
 ---
+Postman View [Link](https://dragonx12561-357078.postman.co/workspace/Dragonx-2003's-Workspace~1a661ca6-ec2a-42d3-854d-5294a4859b25/collection/48640659-1e787c65-d224-483d-91d7-9adfb6486fa7?action=share&creator=48640659) 
+---
 ## Service Documentation Links
 
 See individual service READMEs for full API details, request/response examples, and configuration:
